@@ -56,23 +56,23 @@ public class SetUnitJDialog extends JDialog {
         con.add(lblImgTitle);
 
         pnTitle = new JPanel(null);
-        pnTitle.setBounds(0, 30, 600, 20);
+        pnTitle.setBounds(0, 30, 650, 20);
         pnTitle.setBackground(new Color(215, 172, 116));
         con.add(pnTitle);
         lblTitle = new JLabel("House's Information");
-        lblTitle.setBounds(250, 0, 125, 15);
+        lblTitle.setBounds(270, 0, 125, 15);
         pnTitle.add(lblTitle);
         btnDispose = new JButton(new ImageIcon(getClass().getResource("/Image/xButton.PNG")));
-        btnDispose.setBounds(580, 0, 20, 20);
+        btnDispose.setBounds(630, 0, 20, 20);
         pnTitle.add(btnDispose);
 
         pnMain = new JPanel();
         pnMain.setLayout(null);
-        pnMain.setPreferredSize(new Dimension(600, 1050));
+        pnMain.setPreferredSize(new Dimension(700, 1050));
         pnMain.setBackground(new Color(253, 247, 221));
 
         JScrollPane scDialog = new JScrollPane(pnMain, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scDialog.setBounds(0, 50, 600, 480);
+        scDialog.setBounds(0, 50, 650, 480);
         con.add(scDialog);
 
         int d = 0; //d is the distance between 2 panel
@@ -81,7 +81,7 @@ public class SetUnitJDialog extends JDialog {
                 break;
             }
             pnSetUnit[unit.ordinal()] = new PnSetUnit(unit);
-            pnSetUnit[unit.ordinal()].setBounds(0, 30 + d, 600, 50);
+            pnSetUnit[unit.ordinal()].setBounds(0, 30 + d, 650, 50);
             pnMain.add(pnSetUnit[unit.ordinal()]);
             d += 80;
         }
@@ -129,8 +129,13 @@ public class SetUnitJDialog extends JDialog {
                 }
                 army.setArmourUpgrade(IsLandUI.currentHouse.getArmy().getArmourUpgrade());
                 army.setDamageUpgrade(IsLandUI.currentHouse.getArmy().getDamageUpgrade());
+                // sửa forge
+                army.setArmourForge(IsLandUI.currentHouse.getArmy().getArmourForge());
+                army.setDamageForge(IsLandUI.currentHouse.getArmy().getDamageForge());
                 IsLandUI.currentHouse.setArmy(army);
                 getInstance().dispose();
+                HouseInfoUI house = new HouseInfoUI();
+                house.showWindow();
             }
         });
     }
@@ -141,7 +146,7 @@ public class SetUnitJDialog extends JDialog {
 
     //Show the HouseInfoUI dialog
     public void showWindows() {
-        this.setSize(600, 530);
+        this.setSize(650, 530);
         setUndecorated(true);
         this.setBackground(new Color(0, 0, 0, 0));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

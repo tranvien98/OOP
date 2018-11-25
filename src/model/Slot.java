@@ -22,13 +22,14 @@ public class Slot {
     private Army.Unit unitType;
     private int initNumUnit; // số quân ban đầu.
     private int initHitpointUnit; // máu mỗi quẫn ban đầu.
-
+    private int initMunition; // đạn mỗi quân ban đầu
     public Slot() {
         initNumUnit = 0;
         totalHitpoint = 100;
         totalMunition = 100;
         imageUrl = "";
         initHitpointUnit = 0;
+        initMunition = 0;
         unit = new ArrayList<UnitFighter>();
         size = 0;
     }
@@ -40,13 +41,9 @@ public class Slot {
     public void setUnit(ArrayList unit) {
         this.unit = unit;
     }
-
+    
     public void setTotalHitpoint(int totalHitpoint) {
         this.totalHitpoint = totalHitpoint;
-    }
-
-    public int getTotalMunition() {
-        return totalMunition;
     }
 
     public void setTotalMunition(int totalMunition) {
@@ -94,7 +91,15 @@ public class Slot {
     }
     
     
-    public int getTotalHitpoint() {
+    public int getInitMunition() {
+		return initMunition;
+	}
+
+	public void setInitMunition(int initMunition) {
+		this.initMunition = initMunition;
+	}
+
+	public int getTotalHitpoint() {
         int totalPercent, totalHitpoint = 0;
         for (UnitFighter unitFighter : unit) {                
             totalHitpoint += unitFighter.getHitPoint();
@@ -105,6 +110,20 @@ public class Slot {
             return totalHitpoint * 100/(getUnitAlive() * initHitpointUnit);
         }
     }
+	public int getTotalMunition() {
+		int totalPercent,totalMunition = 0;
+		for(UnitFighter unitFighter : unit) {
+			totalMunition += unitFighter.getMunition();
+		}
+		if(getUnitAlive() == 0 || initMunition == 0)
+			return 0;
+//		else if(unitFighter.getMunition() <=0 )
+//			return 0;
+		else {
+//			System.out.println("init"+initMunition);
+			return totalMunition*100/(getUnitAlive()*initMunition);
+		}
+	}
     public int getTotalHitpointNotPercent() {
         int totalHitpoint = 0;
         for (UnitFighter unitFighter : unit) {                
@@ -119,6 +138,9 @@ public class Slot {
             if (unitFighter.getHitPoint() > 0) 
                 count++;
         }
+   
+      
         return count;
     }
+   
 }

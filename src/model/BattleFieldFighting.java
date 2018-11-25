@@ -5,10 +5,11 @@
  */
 package model;
 
-import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.swing.JOptionPane;
+
 import model.unit.Archer;
 import model.unit.BalloonBombardier;
 import model.unit.Catapult;
@@ -22,6 +23,7 @@ import model.unit.SteamGiant;
 import model.unit.SulphurCarabineer;
 import model.unit.Swordsman;
 import ui.BattleFieldFightingUI;
+import ui.BattleInformationUI;
 import ui.IsLandUI;
 
 /**
@@ -38,21 +40,26 @@ public class BattleFieldFighting {
         this.houseID = houseID;
         war = false;
     }
-
     public void startAttack() {
         int totalHitpointDefenceBefore = defenceBattleField.getTotalHitpoint();
-        attackBattleField.makeArtilleryAttack(defenceBattleField);
-        attackBattleField.makeAirDefenseAttack(defenceBattleField);
+      
         attackBattleField.makeBombersAttack(defenceBattleField);
-        attackBattleField.makeFlanksAttack(defenceBattleField);
-        attackBattleField.makeFrontLineAttack(defenceBattleField);
-        attackBattleField.makeLongRangeAttack(defenceBattleField);
-        defenceBattleField.makeArtilleryAttack(attackBattleField);
-        defenceBattleField.makeAirDefenseAttack(attackBattleField);
         defenceBattleField.makeBombersAttack(attackBattleField);
-        defenceBattleField.makeFlanksAttack(attackBattleField);
-        defenceBattleField.makeFrontLineAttack(attackBattleField);
+        
+        attackBattleField.makeArtilleryAttack(defenceBattleField);
+        defenceBattleField.makeArtilleryAttack(attackBattleField);
+
+        attackBattleField.makeLongRangeAttack(defenceBattleField);
         defenceBattleField.makeLongRangeAttack(attackBattleField);
+
+        attackBattleField.makeFrontLineAttack(defenceBattleField);
+        defenceBattleField.makeFrontLineAttack(attackBattleField);
+
+        attackBattleField.makeFlanksAttack(defenceBattleField);   
+        defenceBattleField.makeFlanksAttack(attackBattleField);
+
+        attackBattleField.makeAirDefenseAttack(defenceBattleField);        
+        defenceBattleField.makeAirDefenseAttack(attackBattleField);
         int totalHitpointDefenceAfter = defenceBattleField.getTotalHitpoint();
         if (IsLandUI.bffUI == null) {
             IsLandUI.bffUI = new BattleFieldFightingUI(this);
@@ -65,11 +72,11 @@ public class BattleFieldFighting {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if(totalHitpointDefenceAfter == totalHitpointDefenceBefore) {
-                    JOptionPane.showMessageDialog(null, "Enemy "+IsLandUI.house[houseID].getName()+" won");
-                    
-                }
-                else {
+//                if(totalHitpointDefenceAfter == totalHitpointDefenceBefore) {
+//                    JOptionPane.showMessageDialog(null, "Enemy TH1 "+IsLandUI.house[houseID].getName()+" won");
+//                    
+//                }
+//                else {
                 
                     attackBattleField.setUnitsBackToReserve();
                     defenceBattleField.setUnitsBackToReserve();
@@ -172,14 +179,23 @@ public class BattleFieldFighting {
                             IsLandUI.myHouse.getArmy().addArmy(army);
                             JOptionPane.showMessageDialog(null, "Wave Success!");
                         }
-                    }, 15000);
+                    }, IsLandUI.myHouse.getArmy().fastForwardComeBack(IsLandUI.myHouse.getArmy(), IsLandUI.fast));
                 }
                 
                 IsLandUI.house[houseID].getWaitingWaveAttack().clear();
                 if (attackBattleField.isAllDead()) {
                     war = false;
                     IsLandUI.house[houseID].getArmy().addArmy(defenceBattleField.getReserve().toArmy());
-                    JOptionPane.showMessageDialog(null, "Enemy "+IsLandUI.house[houseID].getName()+" won");
+                    attackBattleField.getReserve().countCurrentAlive(IsLandUI.myHouse.getId());
+                    defenceBattleField.getReserve().countCurrentAlive(houseID);
+                    int input = JOptionPane.showOptionDialog(null, "Eneny Won", "Infomation", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+                	  if(input == JOptionPane.OK_OPTION)
+                	  {
+                	      BattleInformationUI info = new BattleInformationUI();
+                	      info.showWindow();
+                	  }
+                    
                 } else if (defenceBattleField.isAllDead()) {
                     war = false;
                     Timer timer = new Timer();
@@ -187,21 +203,32 @@ public class BattleFieldFighting {
                         @Override
                         public void run() {
                             IsLandUI.myHouse.getArmy().addArmy(attackBattleField.getReserve().toArmy());
-                            JOptionPane.showMessageDialog(null, "Units came back home");
+                            attackBattleField.getReserve().countCurrentAlive(IsLandUI.myHouse.getId());
+                            defenceBattleField.getReserve().countCurrentAlive(houseID);
+                            JOptionPane.showOptionDialog(null, "ComeBack", "Information", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);                      	 
                         }
-                    }, 30000);
-                    JOptionPane.showMessageDialog(null, "You won "+IsLandUI.house[houseID].getName());
+                    }, IsLandUI.myHouse.getArmy().fastForwardComeBack(IsLandUI.myHouse.getArmy(), IsLandUI.fast));
+                    //thoi gian di ve
+                    int input = JOptionPane.showOptionDialog(null, "You Won", "Information", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+                	  if(input == JOptionPane.OK_OPTION)
+                	  {
+                	      BattleInformationUI infor = new BattleInformationUI();
+                	      infor.showWindow();
+                	  }
                 } else {
                     boolean isAllWall = defenceBattleField.isAllWall();
-                    attackBattleField.addToField(isAllWall);
+                    attackBattleField.addToField(isAllWall);                
                     defenceBattleField.addToField(isAllWall);
                     startAttack();
+                    
+               
                 }
                 
 
+//            }
             }
-            }
-        }, 120*1000);
+        }, 15*60*1000/IsLandUI.fast);
         
         
     }

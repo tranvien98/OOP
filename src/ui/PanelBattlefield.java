@@ -28,7 +28,7 @@ public class PanelBattlefield extends JPanel{
     JLabel lblImageField;
     BattleField battleField;
     int x = 56; //Khoảng cách giữa hai pnSlot
-
+    
     public PanelBattlefield(BattleField battleField) {
         this.setVisible(true);
         this.battleField = battleField;

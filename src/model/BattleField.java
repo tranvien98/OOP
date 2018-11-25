@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 import model.unit.Archer;
 import model.unit.BalloonBombardier;
@@ -25,7 +26,7 @@ public class BattleField {
     public static enum TypeOfBattleField {
         ATTACK, DEFENCE;
     }
-
+    
     private int numberOfSlotForHI;
     private int numberOfSlotForLRF;
     private int numberOfSlotForLI;
@@ -302,7 +303,7 @@ public class BattleField {
                     artillery[index].setUnitType(Army.Unit.Mortar);
                     artillery[index].setInitNumUnit(artillery[index].getUnit().size());
                     artillery[index].setInitHitpointUnit(artillery[index].getUnit().get(0).getHitPoint());
-
+                    artillery[index].setInitMunition(artillery[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<Mortar> units = reserve.getMortar();
@@ -311,6 +312,7 @@ public class BattleField {
                     artillery[index].setUnitType(Army.Unit.Mortar);
                     artillery[index].setInitNumUnit(artillery[index].getUnit().size());
                     artillery[index].setInitHitpointUnit(artillery[index].getUnit().get(0).getHitPoint());
+                    artillery[index].setInitMunition(artillery[index].getUnit().get(0).getMunition());
                     reserve.getMortar().clear();
                 }
                 index++;
@@ -329,6 +331,7 @@ public class BattleField {
                     artillery[index].setUnitType(Army.Unit.Catapult);
                     artillery[index].setInitNumUnit(artillery[index].getUnit().size());
                     artillery[index].setInitHitpointUnit(artillery[index].getUnit().get(0).getHitPoint());
+                    artillery[index].setInitMunition(artillery[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<Catapult> units = reserve.getCatapult();
@@ -337,6 +340,7 @@ public class BattleField {
                     artillery[index].setUnitType(Army.Unit.Catapult);
                     artillery[index].setInitNumUnit(artillery[index].getUnit().size());
                     artillery[index].setInitHitpointUnit(artillery[index].getUnit().get(0).getHitPoint());
+                    artillery[index].setInitMunition(artillery[index].getUnit().get(0).getMunition());
                     reserve.getCatapult().clear();
                 }
                 index++;
@@ -373,6 +377,11 @@ public class BattleField {
     }
 
     public void setAirDefence() {
+    	  int dem = reserve.getArcher().size()+reserve.getCatapult().size()+
+             		reserve.getHop().size()+reserve.getMortar().size()+
+             		reserve.getMortar().size()+reserve.getRam().size()+reserve.getSC().size()+
+             		reserve.getSlinger().size()+reserve.getSpear().size()+reserve.getSteam().size();
+      	  if(dem > 0) {
         int index = countByType(airDefence, Army.Unit.Gyrocopter);
         int slotForGyr = (int) Math.ceil((reserve.getGyrocopter().size() * Gyrocopter.size) / (float) this.spacePerSlotForGy);
         for (int i = 1; i <= slotForGyr; i++) {
@@ -384,6 +393,7 @@ public class BattleField {
                     airDefence[index].setUnitType(Army.Unit.Gyrocopter);
                     airDefence[index].setInitNumUnit(airDefence[index].getUnit().size());
                     airDefence[index].setInitHitpointUnit(airDefence[index].getUnit().get(0).getHitPoint());
+                    airDefence[index].setInitMunition(airDefence[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<Gyrocopter> units = reserve.getGyrocopter();
@@ -392,6 +402,7 @@ public class BattleField {
                     airDefence[index].setUnitType(Army.Unit.Gyrocopter);
                     airDefence[index].setInitNumUnit(airDefence[index].getUnit().size());
                     airDefence[index].setInitHitpointUnit(airDefence[index].getUnit().get(0).getHitPoint());
+                    airDefence[index].setInitMunition(airDefence[index].getUnit().get(0).getMunition());
                     reserve.getGyrocopter().clear();
                 }
                 index++;
@@ -399,9 +410,15 @@ public class BattleField {
                 break;
             }
         }
+        }      	  
     }
 
     public void setBB() {
+    	   int dem = reserve.getArcher().size()+reserve.getCatapult().size()+
+           		reserve.getHop().size()+reserve.getMortar().size()+
+           		reserve.getMortar().size()+reserve.getRam().size()+reserve.getSC().size()+
+           		reserve.getSlinger().size()+reserve.getSpear().size()+reserve.getSteam().size();
+    	  if(dem > 0) {
         int index = countByType(bomber, Army.Unit.Balloon);
         int slotForBB = (int) Math.ceil((reserve.getBB().size() * BalloonBombardier.size) / (float) this.spacePerSlotForBB);
         for (int i = 1; i <= slotForBB; i++) {
@@ -413,6 +430,8 @@ public class BattleField {
                     bomber[index].setUnitType(Army.Unit.Balloon);
                     bomber[index].setInitNumUnit(bomber[index].getUnit().size());
                     bomber[index].setInitHitpointUnit(bomber[index].getUnit().get(0).getHitPoint());
+                    bomber[index].setInitMunition(bomber[index].getUnit().get(0).getMunition());
+                  
                     units.clear();
                 } else {
                     List<BalloonBombardier> units = reserve.getBB();
@@ -421,6 +440,8 @@ public class BattleField {
                     bomber[index].setUnitType(Army.Unit.Balloon);
                     bomber[index].setInitNumUnit(bomber[index].getUnit().size());
                     bomber[index].setInitHitpointUnit(bomber[index].getUnit().get(0).getHitPoint());
+                    bomber[index].setInitMunition(bomber[index].getUnit().get(0).getMunition());
+//                    System.out.println("init"+bomber[index].getUnit().get(0).getMunition());
                     reserve.getBB().clear();
                 }
                 index++;
@@ -428,10 +449,14 @@ public class BattleField {
                 break;
             }
         }
+        }
     }
 
-    public void setFlankToSlot(boolean isAllWall) {
-        if(isAllWall) return;
+    public void setFlankToSlot() {
+    	int currentFront = reserve.getHop().size()*Hoplite.size +reserve.getSteam().size()*SteamGiant.size +reserve.getWall().size();
+    	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+        if(currentFront >= numberFront ) {
+       if(countByType(front, Army.Unit.Spearman) < 1 &&  countByType(front, Army.Unit.Swordsman) < 1) {
         int index = countByType(flank, Army.Unit.Swordsman);
         int slotForSword = (int) Math.ceil((reserve.getSword().size() * Swordsman.size) / (float) this.spacePerSlotForLI);
         for (int i = 1; i <= slotForSword; i++) {
@@ -459,6 +484,7 @@ public class BattleField {
             }
         }
         index += countByType(flank, Army.Unit.Spearman);
+        
         int slotForSpear = (int) Math.ceil((reserve.getSpear().size() * Spearman.size) / (float) this.spacePerSlotForLI);
         for (int i = 1; i <= slotForSpear; i++) {
             if (index < this.numberOfSlotForLI) {
@@ -484,9 +510,17 @@ public class BattleField {
                 break;
             }
         }
+       }
+        }
     }
 
     public void setLongRange() {
+    	int currentFront1 = reserve.getHop().size()*Hoplite.size +
+    			reserve.getSteam().size()*SteamGiant.size + 
+    			reserve.getWall().size() + reserve.getSpear().size() 
+    			+ reserve.getSword().size();
+    	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+    	if(currentFront1 >= numberFront) {
         int index = countByType(longRangeFighter, Army.Unit.Sulfur);
         int slotForSC = (int) Math.ceil((reserve.getSC().size() * SulphurCarabineer.size) / (float) this.spacePerSlotForLRF);
         for (int i = 1; i <= slotForSC; i++) {
@@ -498,6 +532,7 @@ public class BattleField {
                     longRangeFighter[index].setUnitType(Army.Unit.Sulfur);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<SulphurCarabineer> units = reserve.getSC();
@@ -506,6 +541,7 @@ public class BattleField {
                     longRangeFighter[index].setUnitType(Army.Unit.Sulfur);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     reserve.getSC().clear();
                 }
                 index++;
@@ -519,21 +555,21 @@ public class BattleField {
             if (index < this.numberOfSlotForLRF) {
                 if (i < slotForArcher) {
                     List<Archer> units = reserve.getArcher().subList(0, this.spacePerSlotForLRF / Archer.size);
-                    longRangeFighter[index].getUnit().addAll(units);
-                    slotArcher.addAll(units);
+                    longRangeFighter[index].getUnit().addAll(units);           
                     longRangeFighter[index].setImageUrl(Archer.imageUrl);
                     longRangeFighter[index].setUnitType(Army.Unit.Archer);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<Archer> units = reserve.getArcher();
-                    longRangeFighter[index].getUnit().addAll(units);
-                    slotArcher.addAll(units);
+                    longRangeFighter[index].getUnit().addAll(units);              
                     longRangeFighter[index].setImageUrl(Archer.imageUrl);
                     longRangeFighter[index].setUnitType(Army.Unit.Archer);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     reserve.getArcher().clear();
                 }
                 index++;
@@ -552,6 +588,7 @@ public class BattleField {
                     longRangeFighter[index].setUnitType(Army.Unit.Slinger);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     units.clear();
                 } else {
                     List<Slinger> units = reserve.getSlinger();
@@ -560,6 +597,7 @@ public class BattleField {
                     longRangeFighter[index].setUnitType(Army.Unit.Slinger);
                     longRangeFighter[index].setInitNumUnit(longRangeFighter[index].getUnit().size());
                     longRangeFighter[index].setInitHitpointUnit(longRangeFighter[index].getUnit().get(0).getHitPoint());
+                    longRangeFighter[index].setInitMunition(longRangeFighter[index].getUnit().get(0).getMunition());
                     reserve.getSlinger().clear();
                 }
                 index++;
@@ -567,21 +605,38 @@ public class BattleField {
                 break;
             }
         }
+    	}
     }
 
     public void setFrontLine() {
+    	
         int numberOfWall = 0;
+        int dem = reserve.getArcher().size()+reserve.getBB().size()+reserve.getCatapult().size()+
+        		reserve.getGyrocopter().size()+reserve.getHop().size()+reserve.getMortar().size()+
+        		reserve.getMortar().size()+reserve.getRam().size()+reserve.getSC().size()+
+        		reserve.getSlinger().size()+reserve.getSpear().size()+reserve.getSteam().size();
+        	
         Stack<Wall> walls = reserve.getWall();
         numberOfWall = walls.size();
-        for (int i = 0; i < numberOfWall; i++) {
-            Wall wall = walls.pop();
-            front[i].getUnit().add(wall);
-            front[i].setImageUrl(wall.getImageUrl());
-            front[i].setUnitType(Army.Unit.Wall);
-            front[i].setInitNumUnit(1);
-            front[i].setInitHitpointUnit(wall.getHitPoint());
+        if(numberOfWall != 0)
+        {
+        	  Wall exWall = walls.peek();
+              if(dem < exWall.getGarisionLimit())
+              {
+              for (int i = 0; i < numberOfWall; i++) {
+                  Wall wall = walls.pop();       
+                  front[i].getUnit().add(wall);
+                  front[i].setImageUrl(wall.getImageUrl());
+                  front[i].setUnitType(Army.Unit.Wall);
+                  front[i].setInitNumUnit(1);
+                  front[i].setInitHitpointUnit(wall.getHitPoint());
+              }
+              }
+              else {
+              	numberOfWall = 0;
+              }
         }
-
+      
         int index = countByType(front, Army.Unit.Hoplite) + numberOfWall;
         int slotForHop = (int) Math.ceil((reserve.getHop().size() * Hoplite.size) / (float) this.spacePerSlotForHI);
         for (int i = 1; i <= slotForHop; i++) {
@@ -634,21 +689,192 @@ public class BattleField {
                 break;
             }
         }
+    	int currentFront = reserve.getHop().size()*Hoplite.size +
+    			reserve.getSteam().size()*SteamGiant.size + 
+    			reserve.getWall().size();
+    	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+    	if(currentFront < numberFront) {
+        index += countByType(front, Army.Unit.Swordsman);
+        int slotForSword = (int) Math.ceil((reserve.getSword().size() * Swordsman.size) / (float) this.spacePerSlotForHI);
+        for (int i = 1; i <= slotForSword; i++) {
+            if (index < this.numberOfSlotForHI) {
+                if (i < slotForSword) {
+//                	System.out.println("LI"+index);
+                    List<Swordsman> units = reserve.getSword().subList(0, this.spacePerSlotForHI / Swordsman.size);
+                    front[index].getUnit().addAll(units);
+                    front[index].setImageUrl(units.get(0).getImageUrl());
+                    front[index].setUnitType(Army.Unit.Swordsman);
+                    front[index].setInitNumUnit(front[index].getUnit().size());
+                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+                    units.clear();
+                } else {
+                    List<Swordsman> units = reserve.getSword();
+                    front[index].getUnit().addAll(units);
+                    front[index].setImageUrl(units.get(0).getImageUrl());
+                    front[index].setUnitType(Army.Unit.Swordsman);
+                    front[index].setInitNumUnit(front[index].getUnit().size());
+                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+                    reserve.getSword().clear();
+                }
+                index++;
+            } else {
+                break;
+            }
+        }
+        index += countByType(front, Army.Unit.Spearman);
+        int slotForSpear = (int) Math.ceil((reserve.getSpear().size() * Spearman.size) / (float) this.spacePerSlotForHI);
+        for (int i = 1; i <= slotForSpear; i++) {
+            if (index < this.numberOfSlotForHI) {
+                if (i < slotForSpear) {
+                    List<Spearman> units = reserve.getSpear().subList(0, this.spacePerSlotForHI / Spearman.size);
+                    front[index].getUnit().addAll(units);
+                    front[index].setImageUrl(units.get(0).getImageUrl());
+                    front[index].setUnitType(Army.Unit.Spearman);
+                    front[index].setInitNumUnit(front[index].getUnit().size());
+                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+                    units.clear();
+                } else {
+                    List<Spearman> units = reserve.getSpear();
+                    front[index].getUnit().addAll(units);
+                    front[index].setImageUrl(units.get(0).getImageUrl());
+                    front[index].setUnitType(Army.Unit.Spearman);
+                    front[index].setInitNumUnit(front[index].getUnit().size());
+                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+                    reserve.getSpear().clear();
+                }
+                index++;
+            } else {
+                break;
+            }
+        }
+        }
+    	int currentFront1 = reserve.getHop().size()*Hoplite.size +
+    			reserve.getSteam().size()*SteamGiant.size + 
+    			reserve.getWall().size() + reserve.getSpear().size() 
+    			+ reserve.getSword().size();
+    	
+    	if(currentFront1 < numberFront) {
+    		  index += countByType(front, Army.Unit.Sulfur);
+    	        int slotForSC = (int) Math.ceil((reserve.getSC().size() * SulphurCarabineer.size) / (float) this.spacePerSlotForHI);
+    	        for (int i = 1; i <= slotForSC; i++) {
+    	            if (index < this.numberOfSlotForHI) {
+    	                if (i < slotForSC) {
+    	                    List<SulphurCarabineer> units = reserve.getSC().subList(0, this.spacePerSlotForHI / SulphurCarabineer.size);
+    	                    front[index].getUnit().addAll(units);
+    	                    front[index].setImageUrl(units.get(0).getImageUrl());
+    	                    front[index].setUnitType(Army.Unit.Sulfur);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    units.clear();
+    	                } else {
+    	                    List<SulphurCarabineer> units = reserve.getSC();
+    	                    front[index].getUnit().addAll(units);
+    	                    front[index].setImageUrl(units.get(0).getImageUrl());
+    	                    front[index].setUnitType(Army.Unit.Sulfur);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    reserve.getSC().clear();
+    	                }
+    	                index++;
+    	            } else {
+    	                break;
+    	            }
+    	        }
+    	        index += countByType(front, Army.Unit.Archer);
+    	        int slotForArcher = (int) Math.ceil((reserve.getArcher().size() * Archer.size) / (float) this.spacePerSlotForHI);
+    	        for (int i = 1; i <= slotForArcher; i++) {
+    	            if (index < this.numberOfSlotForHI) {
+    	                if (i < slotForArcher) {
+    	                    List<Archer> units = reserve.getArcher().subList(0, this.spacePerSlotForHI / Archer.size);
+    	                    front[index].getUnit().addAll(units);   	               
+    	                    front[index].setImageUrl(Archer.imageUrl);
+    	                    front[index].setUnitType(Army.Unit.Archer);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    units.clear();
+    	                } else {
+    	                    List<Archer> units = reserve.getArcher();
+    	                    front[index].getUnit().addAll(units);  	              
+    	                    front[index].setImageUrl(Archer.imageUrl);
+    	                    front[index].setUnitType(Army.Unit.Archer);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    reserve.getArcher().clear();
+    	                }
+    	                index++;
+    	            } else {
+    	                break;
+    	            }
+    	        }
+    	        index += countByType(front, Army.Unit.Slinger);
+    	        int slotForSlinger = (int) Math.ceil((reserve.getSlinger().size() * Slinger.size) / (float) this.spacePerSlotForHI);
+    	        for (int i = 1; i <= slotForSlinger; i++) {
+    	            if (index < this.numberOfSlotForHI) {
+    	                if (i < slotForSlinger) {
+    	                    List<Slinger> units = reserve.getSlinger().subList(0, this.spacePerSlotForHI / Slinger.size);
+    	                    front[index].getUnit().addAll(units);
+    	                    front[index].setImageUrl(units.get(0).getImageUrl());
+    	                    front[index].setUnitType(Army.Unit.Slinger);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    units.clear();
+    	                } else {
+    	                    List<Slinger> units = reserve.getSlinger();
+    	                    front[index].getUnit().addAll(units);
+    	                    front[index].setImageUrl(units.get(0).getImageUrl());
+    	                    front[index].setUnitType(Army.Unit.Slinger);
+    	                    front[index].setInitNumUnit(front[index].getUnit().size());
+    	                    front[index].setInitHitpointUnit(front[index].getUnit().get(0).getHitPoint());
+    	                    front[index].setInitMunition(front[index].getUnit().get(0).getMunition());
+    	                    reserve.getSlinger().clear();
+    	                }
+    	                index++;
+    	            } else {
+    	                break;
+    	            }
+    	        }
+    	}
     }
+
 
     public void addToReserve(RealArmy reserve, Army sentArmy, int houseID) {
         RealArmy realArmy = new RealArmy();
+        if(sentArmy.getDamageForge() == 0 )
+        {
+        	sentArmy.setDamageForge(100);
+        }
+    
+        
         for (int i = 0; i < sentArmy.getNumberOfArcher(); i++) {
+        	
+        	
+        	
+        	
             Archer archer = new Archer();
             archer.setArmour(archer.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Archer.ordinal()]);
             archer.setDamage(archer.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Archer.ordinal()]);
+            // sửa kichs lò
+          
+            archer.setDamage((int)Math.ceil(archer.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            archer.setArmour(archer.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getArcher().add(archer);
             realArmy.getArcher().add(archer);
+   
         }
         for (int i = 0; i < sentArmy.getNumberOfBB(); i++) {
             BalloonBombardier ballon = new BalloonBombardier();
             ballon.setArmour(ballon.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Balloon.ordinal()]);
             ballon.setDamage(ballon.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Balloon.ordinal()]);
+            
+            ballon.setDamage((int)Math.ceil(ballon.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            ballon.setArmour(ballon.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getBB().add(ballon);
             realArmy.getBB().add(ballon);
         }
@@ -656,6 +882,10 @@ public class BattleField {
             Catapult catapult = new Catapult();
             catapult.setArmour(catapult.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Catapult.ordinal()]);
             catapult.setDamage(catapult.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Catapult.ordinal()]);
+            
+            catapult.setDamage((int)Math.ceil(catapult.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            catapult.setArmour(catapult.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getCatapult().add(catapult);
             realArmy.getCatapult().add(catapult);
         }
@@ -663,6 +893,10 @@ public class BattleField {
             Gyrocopter gy = new Gyrocopter();
             gy.setArmour(gy.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Gyrocopter.ordinal()]);
             gy.setDamage(gy.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Gyrocopter.ordinal()]);
+            
+            gy.setDamage((int)Math.ceil(gy.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            gy.setArmour(gy.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getGyrocopter().add(gy);
             realArmy.getGyrocopter().add(gy);
         }
@@ -670,6 +904,10 @@ public class BattleField {
             Hoplite hop = new Hoplite();
             hop.setArmour(hop.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Hoplite.ordinal()]);
             hop.setDamage(hop.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Hoplite.ordinal()]);
+            
+            hop.setDamage((int)Math.ceil(hop.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            hop.setArmour(hop.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getHop().add(hop);
             realArmy.getHop().add(hop);
         }
@@ -677,6 +915,10 @@ public class BattleField {
             Mortar mortar = new Mortar();
             mortar.setArmour(mortar.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Mortar.ordinal()]);
             mortar.setDamage(mortar.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Mortar.ordinal()]);
+            
+            mortar.setDamage((int)Math.ceil(mortar.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            mortar.setArmour(mortar.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getMortar().add(mortar);
             realArmy.getMortar().add(mortar);
         }
@@ -684,6 +926,10 @@ public class BattleField {
             Ram ram = new Ram();
             ram.setArmour(ram.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Ram.ordinal()]);
             ram.setDamage(ram.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Ram.ordinal()]);
+            
+            ram.setDamage((int)Math.ceil(ram.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            ram.setArmour(ram.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getRam().add(ram);
             realArmy.getRam().add(ram);
         }
@@ -691,6 +937,10 @@ public class BattleField {
             SulphurCarabineer sc = new SulphurCarabineer();
             sc.setArmour(sc.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Sulfur.ordinal()]);
             sc.setDamage(sc.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Sulfur.ordinal()]);
+            
+            sc.setDamage((int)Math.ceil(sc.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            sc.setArmour(sc.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getSC().add(sc);
             realArmy.getSC().add(sc);
         }
@@ -698,6 +948,11 @@ public class BattleField {
             Slinger slinger = new Slinger();
             slinger.setArmour(slinger.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Slinger.ordinal()]);
             slinger.setDamage(slinger.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Slinger.ordinal()]);
+            
+            slinger.setDamage((int)Math.ceil( slinger.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            slinger.setArmour( slinger.getArmour() + sentArmy.getArmourForge());
+            
+            
             reserve.getSlinger().add(slinger);
             realArmy.getSlinger().add(slinger);
         }
@@ -705,6 +960,11 @@ public class BattleField {
             Spearman spear = new Spearman();
             spear.setArmour(spear.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Spearman.ordinal()]);
             spear.setDamage(spear.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Spearman.ordinal()]);
+            
+            spear.setDamage((int)Math.ceil( spear.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            spear.setArmour( spear.getArmour() + sentArmy.getArmourForge());
+            
+           
             reserve.getSpear().add(spear);
             realArmy.getSpear().add(spear);
         }
@@ -712,6 +972,10 @@ public class BattleField {
             SteamGiant steam = new SteamGiant();
             steam.setArmour(steam.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.SteamGiant.ordinal()]);
             steam.setDamage(steam.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.SteamGiant.ordinal()]);
+            
+            steam.setDamage((int)Math.ceil( steam.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            steam.setArmour( steam.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getSteam().add(steam);
             realArmy.getSteam().add(steam);
         }
@@ -719,6 +983,10 @@ public class BattleField {
             Swordsman sword = new Swordsman();
             sword.setArmour(sword.getArmour() + sentArmy.getArmourUpgrade()[Army.Unit.Swordsman.ordinal()]);
             sword.setDamage(sword.getDamage() + sentArmy.getDamageUpgrade()[Army.Unit.Swordsman.ordinal()]);
+            
+            sword.setDamage((int)Math.ceil( sword.getDamage()*sentArmy.getDamageForge()*1.0/100));
+            sword.setArmour( sword.getArmour() + sentArmy.getArmourForge());
+            
             reserve.getSword().add(sword);
             realArmy.getSword().add(sword);
         }
@@ -731,6 +999,7 @@ public class BattleField {
         }
     }
 
+    
     public void setUnitsBackToReserve() {
         for (Slot slot : artillery) {
             if (slot.getUnitType() == Army.Unit.Mortar) {
@@ -774,6 +1043,71 @@ public class BattleField {
                     }
                 }
             }
+            else if (slot.getUnitType() == Army.Unit.Swordsman) {
+                for (UnitFighter unit : slot.getUnit()) {
+                	int currentFront = reserve.getHop().size()*Hoplite.size +
+                			reserve.getSteam().size()*SteamGiant.size + 
+                			reserve.getWall().size();
+                	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+                    if (unit.getHitPoint() != 0 && currentFront < numberFront) {
+                        reserve.getSword().push((Swordsman) unit);
+                    }
+                }
+
+            }
+            else if (slot.getUnitType() == Army.Unit.Spearman) {
+                for (UnitFighter unit : slot.getUnit()) {
+                	int currentFront = reserve.getHop().size()*Hoplite.size 
+                			+reserve.getSteam().size()*SteamGiant.size
+                			+reserve.getWall().size();
+                	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+                    if (unit.getHitPoint() != 0 && currentFront < numberFront) {
+                        reserve.getSpear().push((Spearman) unit);
+                    }
+                }
+
+            }
+            if (slot.getUnitType() == Army.Unit.Sulfur) {
+                for (UnitFighter unit : slot.getUnit()) {
+                	 int currentFront1 = reserve.getHop().size()*Hoplite.size +
+                 			reserve.getSteam().size()*SteamGiant.size + 
+                 			reserve.getWall().size() + reserve.getSpear().size() 
+                 			+ reserve.getSword().size();
+                 	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+                 	
+                    if (unit.getHitPoint() != 0 && currentFront1 < numberFront) {
+                        reserve.getSC().push((SulphurCarabineer) unit);
+                    }
+                }
+
+            }
+            if (slot.getUnitType() == Army.Unit.Archer) {
+                for (UnitFighter unit : slot.getUnit()) {
+                     int currentFront1 = reserve.getHop().size()*Hoplite.size +
+                  			reserve.getSteam().size()*SteamGiant.size + 
+                  			reserve.getWall().size() + reserve.getSpear().size() 
+                  			+ reserve.getSword().size();
+                  	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+                    if (unit.getHitPoint() != 0 && currentFront1 < numberFront) {
+                        reserve.getArcher().push((Archer) unit);
+                    }
+                }
+
+            }
+            if (slot.getUnitType() == Army.Unit.Slinger) {
+                for (UnitFighter unit : slot.getUnit()) {
+                    int currentFront1 = reserve.getHop().size()*Hoplite.size +
+                  			reserve.getSteam().size()*SteamGiant.size + 
+                  			reserve.getWall().size() + reserve.getSpear().size() 
+                  			+ reserve.getSword().size();
+                  	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+                    if (unit.getHitPoint() != 0 && currentFront1 < numberFront) {
+                        reserve.getSlinger().push((Slinger) unit);
+                    }
+                }
+
+            }
+          
 
         }
         for (Slot slot : airDefence) {
@@ -798,6 +1132,12 @@ public class BattleField {
             }
 
         }
+        int currentFront1 = reserve.getHop().size()*Hoplite.size +
+    			reserve.getSteam().size()*SteamGiant.size + 
+    			reserve.getWall().size() + reserve.getSpear().size() 
+    			+ reserve.getSword().size();
+    	int numberFront = this.numberOfSlotForHI*this.spacePerSlotForHI;
+    	if(currentFront1 >= numberFront) {
         for (Slot slot : longRangeFighter) {
             if (slot.getUnitType() == Army.Unit.Sulfur) {
                 for (UnitFighter unit : slot.getUnit()) {
@@ -823,8 +1163,10 @@ public class BattleField {
                 }
 
             }
-
         }
+        }
+    	int currentFront = reserve.getHop().size()*Hoplite.size +reserve.getSteam().size()*SteamGiant.size +reserve.getWall().size();   
+        if(currentFront >= numberFront ) {
         for (Slot slot : flank) {
             if (slot.getUnitType() == Army.Unit.Swordsman) {
                 for (UnitFighter unit : slot.getUnit()) {
@@ -834,7 +1176,7 @@ public class BattleField {
                 }
 
             }
-            if (slot.getUnitType() == Army.Unit.Spearman) {
+            else if (slot.getUnitType() == Army.Unit.Spearman) {
                 for (UnitFighter unit : slot.getUnit()) {
                     if (unit.getHitPoint() != 0) {
                         reserve.getSpear().push((Spearman) unit);
@@ -842,14 +1184,8 @@ public class BattleField {
                 }
 
             }
-            if (slot.getUnitType() == Army.Unit.Slinger) {
-                for (UnitFighter unit : slot.getUnit()) {
-                    if (unit.getHitPoint() != 0) {
-                        reserve.getSlinger().push((Slinger) unit);
-                    }
-                }
-
-            }
+           }
+       
 
         }
         resetAll(levelOfHouse);
@@ -933,17 +1269,37 @@ public class BattleField {
                 enemyFront.add(unit);
             }
         }
+        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
+        for (Slot slot : enemy.getFlank()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFlank.add(unit);
+            }
+        }
         if (!isAllDeadInArrayList(enemyFront)) {
             j = 0;
+            // loại các dơn vị đã chết
             while (i < myArtillery.size() && !isAllDeadInArrayList(enemyFront)) {
                 while (enemyFront.get(j).getHitPoint() == 0) {
                     j++;
                     if (j == enemyFront.size()) {
                         j = 0;
+                     
                     }
                 }
-                int dam = myArtillery.get(i).getDamage();
-                if (!(enemyFront.get(j) instanceof Wall)) {
+                int dam = 0;
+                int munition = myArtillery.get(i).getMunition();
+                // tinhs xac suat
+                float accuracy = myArtillery.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myArtillery.get(i).getDamage();
+                }
+            
+                // neu gap tuong
+                if ((enemyFront.get(j) instanceof Wall) && dam != 0) {
                     dam = 80;
                 }
                 while (dam > enemyFront.get(j).getArmour()) {
@@ -958,30 +1314,30 @@ public class BattleField {
                                 j++;
                                 if (j == enemyFront.size()) {
                                     j = 0;
+                                  
                                 }
                             }
                         }
                     } else {
                         enemyFront.get(j).setHitPoint(enemyFront.get(j).getHitPoint() - dam + enemyFront.get(j).getArmour());
-                        dam = 0;
-                        j++;
-                        if (j == enemyFront.size()) {
-                            j = 0;
+                    //tinhs danj
+                        munition = munition - 1;
+                        myArtillery.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myArtillery.get(i).setDamage(myArtillery.get(i).getNearHit());
+                        	myArtillery.get(i).setAccuracy(myArtillery.get(i).getAccuracyNear());
+//                        	myArtillery.get(i).setHitPoint(0);
                         }
+                        dam = 0;
+          
+                  
                     }
                 }
                 i++;
 
             }
-        }
-
-        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
-        for (Slot slot : enemy.getFlank()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFlank.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFlank)) {
+        } else if (!isAllDeadInArrayList(enemyFlank)) {
             j = 0;
             while (i < myArtillery.size() && !isAllDeadInArrayList(enemyFlank)) {
                 while (enemyFlank.get(j).getHitPoint() == 0) {
@@ -990,7 +1346,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myArtillery.get(i).getDamage();
+                int dam = 0;
+                int munition = myArtillery.get(i).getMunition();
+                // tinhs xac suat
+                float accuracy = myArtillery.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myArtillery.get(i).getDamage();
+                }
+                
                 while (dam > enemyFlank.get(j).getArmour()) {
                     if (dam > enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint()) {
                         dam -= enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint();
@@ -1008,6 +1375,14 @@ public class BattleField {
                         }
                     } else {
                         enemyFlank.get(j).setHitPoint(enemyFlank.get(j).getHitPoint() - dam + enemyFlank.get(j).getArmour());
+                        //tinhs danj
+                        munition = munition - 1;
+                        myArtillery.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myArtillery.get(i).setDamage(myArtillery.get(i).getNearHit());
+                        	myArtillery.get(i).setAccuracy(myArtillery.get(i).getAccuracyNear());
+                        }
                         dam = 0;
                     }
                 }
@@ -1024,6 +1399,7 @@ public class BattleField {
         for (Slot slot : longRangeFighter) {
             for (UnitFighter unit : slot.getUnit()) {
                 myLongRange.add(unit);
+//                System.out.println("Moution"+unit.getMunition());
             }
         }
         ArrayList<UnitFighter> enemyFront = new ArrayList<>();
@@ -1035,6 +1411,19 @@ public class BattleField {
             }
             for (UnitFighter unit : slot.getUnit()) {
                 enemyFront.add(unit);
+//                System.out.println("Dam"+unit.getDamage());
+            }
+        }
+        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
+        for (Slot slot : enemy.getFlank()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFlank.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyLongRange = new ArrayList<>();
+        for (Slot slot : enemy.getlongRangeFighter()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyLongRange.add(unit);
             }
         }
         if (allIsWall) {
@@ -1047,10 +1436,36 @@ public class BattleField {
                     j++;
                     if (j == enemyFront.size()) {
                         j = 0;
+                       
                     }
                 }
-                int dam = myLongRange.get(i).getDamage();
+                int dam = 0;
+                int munition = myLongRange.get(i).getMunition();
+                // tinhs xac suat
+                float accuracy = myLongRange.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myLongRange.get(i).getDamage();
+                }
+                
                 //if(!(enemyFront.get(j) instanceof Wall)) dam = 80;
+//                System.out.println("rd"+random);
+//                System.out.println("Dam"+myLongRange.get(i).getDamage());
+//
+//                System.out.println("dam"+dam);
+                int  dauwall = j;
+                while((enemyFront.get(j) instanceof Wall))
+                {
+                	  j++;
+                      if (j == enemyFront.size()) {
+                          j = dauwall;
+                          break;
+                         
+                      }
+                }
                 while (dam > enemyFront.get(j).getArmour()) {
                     if (dam > enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint()) {
                         dam -= enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint();
@@ -1068,11 +1483,17 @@ public class BattleField {
                         }
                     } else {
                         enemyFront.get(j).setHitPoint(enemyFront.get(j).getHitPoint() - dam + enemyFront.get(j).getArmour());
-                        dam = 0;
-                        j++;
-                        if (j == enemyFront.size()) {
-                            j = 0;
+                        //tinhs danj
+                        munition = munition - 1;
+                        myLongRange.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myLongRange.get(i).setDamage(myLongRange.get(i).getNearHit());
+                        	myLongRange.get(i).setAccuracy(myLongRange.get(i).getAccuracyNear());
                         }
+                        dam = 0;
+                       
+                       
                     }
                 }
                 i++;
@@ -1080,13 +1501,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
-        for (Slot slot : enemy.getFlank()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFlank.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFlank)) {
+      
+        else if (!isAllDeadInArrayList(enemyFlank)) {
             j = 0;
             while (i < myLongRange.size() && !isAllDeadInArrayList(enemyFlank)) {
                 while (enemyFlank.get(j).getHitPoint() == 0) {
@@ -1095,8 +1511,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myLongRange.get(i).getDamage();
-                //if(!(enemyFront.get(j) instanceof Wall)) dam = 80;
+                int dam = 0;
+                int munition = myLongRange.get(i).getMunition();
+                // tinhs xac suat
+                float accuracy = myLongRange.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myLongRange.get(i).getDamage();
+                }
                 while (dam > enemyFlank.get(j).getArmour()) {
                     if (dam > enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint()) {
                         dam -= enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint();
@@ -1114,19 +1539,23 @@ public class BattleField {
                         }
                     } else {
                         enemyFlank.get(j).setHitPoint(enemyFlank.get(j).getHitPoint() - dam + enemyFlank.get(j).getArmour());
+                        //tinhs danj
+                        munition = munition - 1;
+                        myLongRange.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myLongRange.get(i).setDamage(myLongRange.get(i).getNearHit());
+                        	myLongRange.get(i).setAccuracy(myLongRange.get(i).getAccuracyNear());
+                        }
                         dam = 0;
+                     
                     }
                 }
                 i++;
             }
         }
-        ArrayList<UnitFighter> enemyLongRange = new ArrayList<>();
-        for (Slot slot : enemy.getlongRangeFighter()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyLongRange.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyLongRange)) {
+     
+        else if (!isAllDeadInArrayList(enemyLongRange)) {
             j = 0;
             while (i < myLongRange.size() && !isAllDeadInArrayList(enemyLongRange)) {
                 while (enemyLongRange.get(j).getHitPoint() == 0) {
@@ -1135,8 +1564,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myLongRange.get(i).getDamage();
-                //if(!(enemyLongRange.get(j) instanceof Wall)) dam = 80;
+                int dam = 0;
+                int munition = myLongRange.get(i).getMunition();
+                // tinhs xac suat
+                float accuracy = myLongRange.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myLongRange.get(i).getDamage();
+                }
+                
                 while (dam > enemyLongRange.get(j).getArmour()) {
                     if (dam > enemyLongRange.get(j).getArmour() + enemyLongRange.get(j).getHitPoint()) {
                         dam -= enemyLongRange.get(j).getArmour() + enemyLongRange.get(j).getHitPoint();
@@ -1154,6 +1593,14 @@ public class BattleField {
                         }
                     } else {
                         enemyLongRange.get(j).setHitPoint(enemyLongRange.get(j).getHitPoint() - dam + enemyLongRange.get(j).getArmour());
+                        //tinhs danj
+                        munition = munition - 1;
+                        myLongRange.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myLongRange.get(i).setDamage(myLongRange.get(i).getNearHit());
+                        	myLongRange.get(i).setAccuracy(myLongRange.get(i).getAccuracyNear());
+                        }
                         dam = 0;
                     }
                 }
@@ -1177,6 +1624,26 @@ public class BattleField {
                 enemyFront.add(unit);
             }
         }
+
+        ArrayList<UnitFighter> enemyLongRange = new ArrayList<>();
+        for (Slot slot : enemy.getlongRangeFighter()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyLongRange.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyArtilery = new ArrayList<>();
+        for (Slot slot : enemy.getArtillery()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyArtilery.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
+        for (Slot slot : enemy.getFlank()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFlank.add(unit);
+            }
+        }
+        
         if (!isAllDeadInArrayList(enemyFront)) {
             j = 0;
             while (i < myFrontLine.size() && !isAllDeadInArrayList(enemyFront)) {
@@ -1186,7 +1653,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFrontLine.get(i).getDamage();
+                int dam = 0;
+            
+                // tinhs xac suat
+                float accuracy = myFrontLine.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFrontLine.get(i).getDamage();
+                }
                 //if(!(enemyFront.get(j) instanceof Wall)) dam = 80;
                 while (dam > enemyFront.get(j).getArmour()) {
                     if (dam > enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint()) {
@@ -1217,13 +1694,7 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyLongRange = new ArrayList<>();
-        for (Slot slot : enemy.getlongRangeFighter()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyLongRange.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyLongRange)) {
+        else if (!isAllDeadInArrayList(enemyLongRange)) {
             j = 0;
             while (i < myFrontLine.size() && !isAllDeadInArrayList(enemyLongRange)) {
                 while (enemyLongRange.get(j).getHitPoint() == 0) {
@@ -1232,7 +1703,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFrontLine.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFrontLine.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFrontLine.get(i).getDamage();
+                }
                 //if(!(enemyLongRange.get(j) instanceof Wall)) dam = 80;
                 while (dam > enemyLongRange.get(j).getArmour()) {
                     if (dam > enemyLongRange.get(j).getArmour() + enemyLongRange.get(j).getHitPoint()) {
@@ -1258,13 +1739,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyArtilery = new ArrayList<>();
-        for (Slot slot : enemy.getArtillery()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyArtilery.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyArtilery)) {
+      
+        else  if (!isAllDeadInArrayList(enemyArtilery)) {
             j = 0;
             while (i < myFrontLine.size() && !isAllDeadInArrayList(enemyArtilery)) {
                 while (enemyArtilery.get(j).getHitPoint() == 0) {
@@ -1273,7 +1749,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFrontLine.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFrontLine.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFrontLine.get(i).getDamage();
+                }
                 //if(!(enemyFront.get(j) instanceof Wall)) dam = 80;
                 while (dam > enemyArtilery.get(j).getArmour()) {
                     if (dam > enemyArtilery.get(j).getArmour() + enemyArtilery.get(j).getHitPoint()) {
@@ -1299,13 +1785,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
-        for (Slot slot : enemy.getFlank()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFlank.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFlank)) {
+     
+        else  if (!isAllDeadInArrayList(enemyFlank)) {
             j = 0;
             while (i < myFrontLine.size() && !isAllDeadInArrayList(enemyFlank)) {
                 while (enemyFlank.get(j).getHitPoint() == 0) {
@@ -1314,7 +1795,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFrontLine.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFrontLine.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFrontLine.get(i).getDamage();
+                }
                 //if(!(enemyFront.get(j) instanceof Wall)) dam = 80;
                 while (dam > enemyFlank.get(j).getArmour()) {
                     if (dam > enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint()) {
@@ -1357,6 +1848,24 @@ public class BattleField {
                 enemyArtillery.add(unit);
             }
         }
+        ArrayList<UnitFighter> enemyLongRangeFighter = new ArrayList<>();
+        for (Slot slot : enemy.getlongRangeFighter()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyLongRangeFighter.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyFront = new ArrayList<>();
+        for (Slot slot : enemy.getFront()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFront.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
+        for (Slot slot : enemy.getFlank()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFlank.add(unit);
+            }
+        }
         if (!isAllDeadInArrayList(enemyArtillery)) {
             j = 0;
             while (i < myBombers.size() && !isAllDeadInArrayList(enemyArtillery)) {
@@ -1366,7 +1875,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myBombers.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myBombers.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myBombers.get(i).getDamage();
+                }
+                int munition = myBombers.get(i).getMunition();
                 while (dam > enemyArtillery.get(j).getArmour()) {
                     if (dam > enemyArtillery.get(j).getArmour() + enemyArtillery.get(j).getHitPoint()) {
                         dam -= enemyArtillery.get(j).getArmour() + enemyArtillery.get(j).getHitPoint();
@@ -1384,7 +1904,16 @@ public class BattleField {
                         }
                     } else {
                         enemyArtillery.get(j).setHitPoint(enemyArtillery.get(j).getHitPoint() - dam + enemyArtillery.get(j).getArmour());
+                        //tinhs danj
+                        munition = munition - 1;
+                        myBombers.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myBombers.get(i).setDamage(0);
+//                        	myBombers.get(i).setHitPoint(0);
+                        }
                         dam = 0;
+                        
                         j++;
                         if (j == enemyArtillery.size()) {
                             j = 0;
@@ -1395,13 +1924,8 @@ public class BattleField {
 
             }
         }
-        ArrayList<UnitFighter> enemyLongRangeFighter = new ArrayList<>();
-        for (Slot slot : enemy.getlongRangeFighter()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyLongRangeFighter.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyLongRangeFighter)) {
+     
+        else if (!isAllDeadInArrayList(enemyLongRangeFighter)) {
             j = 0;
             while (i < myBombers.size() && !isAllDeadInArrayList(enemyLongRangeFighter)) {
                 while (enemyLongRangeFighter.get(j).getHitPoint() == 0) {
@@ -1410,7 +1934,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myBombers.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myBombers.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myBombers.get(i).getDamage();
+                }
+                int munition = myBombers.get(i).getMunition();
                 while (dam > enemyLongRangeFighter.get(j).getArmour()) {
                     if (dam > enemyLongRangeFighter.get(j).getArmour() + enemyLongRangeFighter.get(j).getHitPoint()) {
                         dam -= enemyLongRangeFighter.get(j).getArmour() + enemyLongRangeFighter.get(j).getHitPoint();
@@ -1428,6 +1963,13 @@ public class BattleField {
                         }
                     } else {
                         enemyLongRangeFighter.get(j).setHitPoint(enemyLongRangeFighter.get(j).getHitPoint() - dam + enemyLongRangeFighter.get(j).getArmour());
+                        munition = munition - 1;
+                        myBombers.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myBombers.get(i).setDamage(0);
+//                        	myBombers.get(i).setHitPoint(0);
+                        }
                         dam = 0;
                         j++;
                         if (j == enemyLongRangeFighter.size()) {
@@ -1440,13 +1982,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyFront = new ArrayList<>();
-        for (Slot slot : enemy.getFront()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFront.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFront)) {
+     
+        else if (!isAllDeadInArrayList(enemyFront)) {
             j = 0;
             while (i < myBombers.size() && !isAllDeadInArrayList(enemyFront)) {
                 while (enemyFront.get(j).getHitPoint() == 0) {
@@ -1455,7 +1992,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myBombers.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myBombers.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myBombers.get(i).getDamage();
+                }
+                int munition = myBombers.get(i).getMunition();
                 while (dam > enemyFront.get(j).getArmour()) {
                     if (dam > enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint()) {
                         dam -= enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint();
@@ -1473,6 +2021,14 @@ public class BattleField {
                         }
                     } else {
                         enemyFront.get(j).setHitPoint(enemyFront.get(j).getHitPoint() - dam + enemyFront.get(j).getArmour());
+                        munition = munition - 1;
+                        myBombers.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myBombers.get(i).setDamage(0);
+//                        	myBombers.get(i).setHitPoint(0);
+                        }
+                      
                         dam = 0;
                         j++;
                         if (j == enemyFront.size()) {
@@ -1485,13 +2041,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyFlank = new ArrayList<>();
-        for (Slot slot : enemy.getFlank()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFlank.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFlank)) {
+      
+        else if (!isAllDeadInArrayList(enemyFlank)) {
             j = 0;
             while (i < myBombers.size() && !isAllDeadInArrayList(enemyFlank)) {
                 while (enemyFlank.get(j).getHitPoint() == 0) {
@@ -1500,7 +2051,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myBombers.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myBombers.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myBombers.get(i).getDamage();
+                }
+                int munition = myBombers.get(i).getMunition();
                 while (dam > enemyFlank.get(j).getArmour()) {
                     if (dam > enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint()) {
                         dam -= enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint();
@@ -1518,6 +2080,14 @@ public class BattleField {
                         }
                     } else {
                         enemyFlank.get(j).setHitPoint(enemyFlank.get(j).getHitPoint() - dam + enemyFlank.get(j).getArmour());
+                        munition = munition - 1;
+                        myBombers.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myBombers.get(i).setDamage(0);
+//                        	myBombers.get(i).setHitPoint(0);
+                        }
+                      
                         dam = 0;
                     }
                 }
@@ -1541,6 +2111,12 @@ public class BattleField {
                 enemyBombers.add(unit);
             }
         }
+        ArrayList<UnitFighter> enemyAirDefense = new ArrayList<>();
+        for (Slot slot : enemy.getAirDefence()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyAirDefense.add(unit);
+            }
+        }
         if (!isAllDeadInArrayList(enemyBombers)) {
             j = 0;
             while (i < myAirDefense.size() && !isAllDeadInArrayList(enemyBombers)) {
@@ -1550,7 +2126,19 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myAirDefense.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myAirDefense.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myAirDefense.get(i).getDamage();
+                }
+                int munition = myAirDefense.get(i).getMunition();
+                
                 while (dam > enemyBombers.get(j).getArmour()) {
                     if (dam > enemyBombers.get(j).getArmour() + enemyBombers.get(j).getHitPoint()) {
                         dam -= enemyBombers.get(j).getArmour() + enemyBombers.get(j).getHitPoint();
@@ -1568,6 +2156,13 @@ public class BattleField {
                         }
                     } else {
                         enemyBombers.get(j).setHitPoint(enemyBombers.get(j).getHitPoint() - dam + enemyBombers.get(j).getArmour());
+                        munition = munition - 1;
+                        myAirDefense.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myAirDefense.get(i).setDamage(0);
+//                        	myAirDefense.get(i).setHitPoint(0);
+                        }
                         dam = 0;
                         j++;
                         if (j == enemyBombers.size()) {
@@ -1580,13 +2175,7 @@ public class BattleField {
             }
         }
 //
-        ArrayList<UnitFighter> enemyAirDefense = new ArrayList<>();
-        for (Slot slot : enemy.getAirDefence()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyAirDefense.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyAirDefense)) {
+       else if (!isAllDeadInArrayList(enemyAirDefense)) {
             j = 0;
             while (i < myAirDefense.size() && !isAllDeadInArrayList(enemyAirDefense)) {
                 while (enemyAirDefense.get(j).getHitPoint() == 0) {
@@ -1595,7 +2184,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myAirDefense.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myAirDefense.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myAirDefense.get(i).getDamage();
+                }
+                int munition = myAirDefense.get(i).getMunition();
                 while (dam > enemyAirDefense.get(j).getArmour()) {
                     if (dam > enemyAirDefense.get(j).getArmour() + enemyAirDefense.get(j).getHitPoint()) {
                         dam -= enemyAirDefense.get(j).getArmour() + enemyAirDefense.get(j).getHitPoint();
@@ -1613,6 +2213,13 @@ public class BattleField {
                         }
                     } else {
                         enemyAirDefense.get(j).setHitPoint(enemyAirDefense.get(j).getHitPoint() - dam + enemyAirDefense.get(j).getArmour());
+                        munition = munition - 1;
+                        myAirDefense.get(i).setMunition(munition);         
+                        if(munition == 0)
+                        {
+                        	myAirDefense.get(i).setDamage(0);
+//                        	myAirDefense.get(i).setHitPoint(0);
+                        }
                         dam = 0;
                     }
                 }
@@ -1636,6 +2243,24 @@ public class BattleField {
                 enemyFlank.add(unit);
             }
         }
+        ArrayList<UnitFighter> enemyLongRangeFighter = new ArrayList<>();
+        for (Slot slot : enemy.getlongRangeFighter()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyLongRangeFighter.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyArtillery = new ArrayList<>();
+        for (Slot slot : enemy.getArtillery()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyArtillery.add(unit);
+            }
+        }
+        ArrayList<UnitFighter> enemyFront = new ArrayList<>();
+        for (Slot slot : enemy.getFront()) {
+            for (UnitFighter unit : slot.getUnit()) {
+                enemyFront.add(unit);
+            }
+        }
         if (!isAllDeadInArrayList(enemyFlank)) {
             j = 0;
             while (i < myFlanks.size() && !isAllDeadInArrayList(enemyFlank)) {
@@ -1645,7 +2270,17 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFlanks.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFlanks.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFlanks.get(i).getDamage();
+                }
                 while (dam > enemyFlank.get(j).getArmour()) {
                     if (dam > enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint()) {
                         dam -= enemyFlank.get(j).getArmour() + enemyFlank.get(j).getHitPoint();
@@ -1670,13 +2305,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyLongRangeFighter = new ArrayList<>();
-        for (Slot slot : enemy.getlongRangeFighter()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyLongRangeFighter.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyLongRangeFighter)) {
+       
+        else  if (!isAllDeadInArrayList(enemyLongRangeFighter)) {
             j = 0;
             while (i < myFlanks.size() && !isAllDeadInArrayList(enemyLongRangeFighter)) {
                 while (enemyLongRangeFighter.get(j).getHitPoint() == 0) {
@@ -1685,7 +2315,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFlanks.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFlanks.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFlanks.get(i).getDamage();
+                }
+                
                 while (dam > enemyLongRangeFighter.get(j).getArmour()) {
                     if (dam > enemyLongRangeFighter.get(j).getArmour() + enemyLongRangeFighter.get(j).getHitPoint()) {
                         dam -= enemyLongRangeFighter.get(j).getArmour() + enemyLongRangeFighter.get(j).getHitPoint();
@@ -1715,13 +2356,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyArtillery = new ArrayList<>();
-        for (Slot slot : enemy.getArtillery()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyArtillery.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyArtillery)) {
+      
+        else if (!isAllDeadInArrayList(enemyArtillery)) {
             j = 0;
             while (i < myFlanks.size() && !isAllDeadInArrayList(enemyArtillery)) {
                 while (enemyArtillery.get(j).getHitPoint() == 0) {
@@ -1730,7 +2366,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFlanks.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFlanks.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFlanks.get(i).getDamage();
+                }
+                
                 while (dam > enemyArtillery.get(j).getArmour()) {
                     if (dam > enemyArtillery.get(j).getArmour() + enemyArtillery.get(j).getHitPoint()) {
                         dam -= enemyArtillery.get(j).getArmour() + enemyArtillery.get(j).getHitPoint();
@@ -1760,13 +2407,8 @@ public class BattleField {
             }
         }
 
-        ArrayList<UnitFighter> enemyFront = new ArrayList<>();
-        for (Slot slot : enemy.getFront()) {
-            for (UnitFighter unit : slot.getUnit()) {
-                enemyFront.add(unit);
-            }
-        }
-        if (!isAllDeadInArrayList(enemyFront)) {
+      
+        else if (!isAllDeadInArrayList(enemyFront)) {
             j = 0;
             while (i < myFlanks.size() && !isAllDeadInArrayList(enemyFront)) {
                 while (enemyFront.get(j).getHitPoint() == 0) {
@@ -1775,7 +2417,18 @@ public class BattleField {
                         j = 0;
                     }
                 }
-                int dam = myFlanks.get(i).getDamage();
+                int dam = 0;
+                
+                // tinhs xac suat
+                float accuracy = myFlanks.get(i).getAccuracy();
+                int intAccuracy = (int)(accuracy*10);
+                Random rd = new Random();
+                int random = Math.abs(rd.nextInt()%10);
+                if(random < intAccuracy)
+                {
+                	dam = myFlanks.get(i).getDamage();
+                }
+                
                 while (dam > enemyFront.get(j).getArmour()) {
                     if (dam > enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint()) {
                         dam -= enemyFront.get(j).getArmour() + enemyFront.get(j).getHitPoint();
@@ -1821,7 +2474,7 @@ public class BattleField {
         setAirDefence();
         setArtilleryClass();
         setFrontLine();
-        setFlankToSlot(isAllWall);
+        setFlankToSlot();
         setBB();
     }
 
@@ -1936,7 +2589,39 @@ public class BattleField {
     public void setSlotArcher(ArrayList<Archer> slotArcher) {
         this.slotArcher = slotArcher;
     }
-    
+    public void countArmyAtt(RealArmy reserve, Army sentArmy, int houseID)
+    {
+//    	 for(int i=1;i<18;i++) {
+//    		
+//    		 if(IsLandUI.house[i].getTypeOfHouse() == 0) {
+//    			 int houseID = i;
+    	  int[] alive = IsLandUI.house[houseID].getArmy().getNumberArmyAtt();
+    	  int[] res = new int[12];
+    	  res[0] = alive[0]+sentArmy.getNumberOfArcher();
+    	  res[1] = alive[1]+sentArmy.getNumberOfBB();
+    	  res[2] = alive[2]+sentArmy.getNumberOfCatapult();
+    	  res[3] = alive[3]+sentArmy.getNumberOfGyrocopter();
+    	  res[4] = alive[4]+sentArmy.getNumberOfHop();
+    	  res[5] = alive[5]+sentArmy.getNumberOfMotar();
+    	  res[6] = alive[6]+sentArmy.getNumberOfRam();
+    	  res[7] = alive[7]+sentArmy.getNumberOfSC();
+    	  res[8] = alive[8]+sentArmy.getNumberOfSlinger();
+    	  res[9] = alive[9]+sentArmy.getNumberOfSpear();
+    	  res[10] = alive[10]+sentArmy.getNumberOfSteam();
+    	  res[11] = alive[11]+sentArmy.getNumberOfSword();
+//    	  System.out.println("sent"+sentArmy.getNumberOfHop());	 
+//    	  System.out.println("senti"+IsLandUI.house[houseID].getTypeOfHouse());	
+    	  IsLandUI.house[houseID].getArmy().setNumberArmyAtt(res);
+//          for(int i=0;i<12;i++) {
+//        	  System.out.println("hihihaha"+res[i]);
+//          }
+	      
+//    	
+    }
+//    public void getTotalArmy(int[] ) {
+//    	int res[] = new int[12];
+//    	
+//    }
 //Lấy toàn bộ máu của tất cả các quân trong các slot để kiểm tra chiến trường có thay đổi hay không
      public int getTotalHitpoint()  {
         int totalHitpoint = 0;
@@ -1945,6 +2630,7 @@ public class BattleField {
                     totalHitpoint += slot.getTotalHitpointNotPercent();
             }
         }
+
         return totalHitpoint;
     }
 }

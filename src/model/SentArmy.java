@@ -16,10 +16,10 @@ public class SentArmy {
     public RealArmy getRealArmy() {
         return realArmy;
     }
-
-    public void setRealArmy(RealArmy realArmy) {
-        this.realArmy = realArmy;
-    }
+//
+//    public void setRealArmy(RealArmy realArmy) {
+//        this.realArmy = realArmy;
+//    }
 
     public long getArrivalTime() {
         return arrivalTime;

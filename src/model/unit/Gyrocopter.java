@@ -4,7 +4,7 @@ public class Gyrocopter extends AirDefence {
 
     public static final int speed = 80;
     public static final int size = 1;
-    public static final float accuracy = 0.8f;
+//    public static final float accuracy = 0.8f;
     private String imageUrl = "/image/GyrocopterBB.png";
 
     public Gyrocopter() {
@@ -12,6 +12,7 @@ public class Gyrocopter extends AirDefence {
         munition = 4;
         armour = 0;
         damage = 17;
+        accuracy = 0.8f;
     }
 
     public String getImageUrl() {

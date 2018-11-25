@@ -20,6 +20,7 @@ import model.unit.SteamGiant;
 import model.unit.SulphurCarabineer;
 import model.unit.Swordsman;
 import model.unit.UnitFighter;
+import ui.IsLandUI;
 
 /**
  *
@@ -157,8 +158,7 @@ public class RealArmy {
     public void setSlinger(Stack<Slinger> Slinger) {
         this.slinger = Slinger;
     }
-
-    public Stack<Archer> getArcher() {
+	public Stack<Archer> getArcher() {
         return archer;
     }
 
@@ -180,7 +180,51 @@ public class RealArmy {
         }
 
     }
-
+    public void countCurrentAlive(int id)
+    {
+ 	   int res[] = new int[12];
+ 	   int tmp[] = IsLandUI.house[id].getArmy().getNumberArmyAtt();
+ 	   int alive[] = new int[12];
+ 	   
+		 	alive[0] =  this.getArcher().size();
+		 	alive[1] = this.getBB().size();
+		 	alive[2] = this.getCatapult().size();
+		 	alive[3] = this.getGyrocopter().size();
+		 	alive[4] = this.getHop().size();
+		 	alive[5] = this.getMortar().size();
+		 	alive[6] = this.getMortar().size();
+		 	alive[7] = this.getRam().size();
+		 	alive[8] = this.getSC().size();
+		 	alive[9] = this.getSlinger().size();
+		 	alive[10] = this.getSpear().size();
+		 	alive[11] = this.getSteam().size();
+//		 	System.out.println("idd"+id);
+//		 	  for(int i=0 ;i<12;i++)
+//		      {
+//		    	  System.out.println("alive"+alive[i]);
+//		    	  
+//		      }
+ 	      res[0] = tmp[0] - this.getArcher().size();
+ 	      res[1] = tmp[1] -  this.getBB().size();
+ 	      res[2] = tmp[2] -  this.getCatapult().size();
+ 	      res[3] = tmp[3] -  this.getGyrocopter().size();
+ 	      res[4] = tmp[4] -  this.getHop().size();
+ 	      res[5] = tmp[5] -  this.getMortar().size();
+ 	      res[6] = tmp[6] -  this.getMortar().size();
+ 	      res[7] = tmp[7] -  this.getRam().size();
+ 	      res[8] = tmp[8] -  this.getSC().size();
+ 	      res[9] = tmp[9] -  this.getSlinger().size();
+ 	      res[10] = tmp[10] -  this.getSpear().size();
+ 	      res[11] = tmp[11] -  this.getSteam().size();
+// 	     for(int i=0 ;i<12;i++)
+//	      {
+//	    	  System.out.println("tmp"+tmp[i]);
+//	    	  System.out.println("res"+res[i]);
+//	      }
+ 	     
+ 	      IsLandUI.house[id].getArmy().setNumberDeathArmyAtt(res);
+ 	     IsLandUI.house[id].getArmy().setNumberAliveAtt(alive);
+    }
     public Army toArmy() {
         Army army = new Army();
         army.setNumberOfArcher(this.getArcher().size());
@@ -197,6 +241,7 @@ public class RealArmy {
         army.setNumberOfSword(this.getSword().size());
         return army;
     }
+     
 
     public Stack getUnit(Army.Unit unit) {
         switch (unit) {
@@ -240,8 +285,9 @@ public class RealArmy {
                 break;
             case Catapult:
                 catapult.push(new Catapult());
-//            case Gyrocopter:
-//                return setGyrocopter();
+            case Gyrocopter:
+                gyrocopter.push(new Gyrocopter());
+                break;
             case Hoplite:
                 hop.push(new Hoplite());
                 break;
@@ -253,16 +299,18 @@ public class RealArmy {
                 break;
             case Slinger:
                 slinger.push(new Slinger());
-//            case Spearman:
-//                return setSpear();
+                break;
+            case Spearman:
+                spear.push(new Spearman());
             case SteamGiant:
                 steam.push(new SteamGiant());
                 break;
             case Sulfur:
                 sC.push(new SulphurCarabineer());
                 break;
-//            case Swordsman:
-//                return setSword();
+            case Swordsman:
+                sword.push(new Swordsman());
+                break;
             default:
         }
     }

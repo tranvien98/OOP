@@ -1,7 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e468a549-4994-409d-936d-ff42964b53ba" name="Default Changelist" comment="" />
+    <list default="true" id="e468a549-4994-409d-936d-ff42964b53ba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv1.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv10.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv13.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv16.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv18+.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv18+.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv2.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv4.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/House/houseLv7.png" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/House/houseLv7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/image/island.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/bin/image/island.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Army$ClassUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Army$ClassUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Army$Unit.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Army$Unit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Army.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Army.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleField$TypeOfBattleField.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleField$TypeOfBattleField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleField.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleFieldFighting$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/BattleFieldFighting.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/BattleFieldFighting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/House$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/House$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/House.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/RealArmy.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/RealArmy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/SentArmy.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/SentArmy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Archer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Archer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/BalloonBombardier.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/BalloonBombardier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/BatteringRam.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/BatteringRam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Catapult.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Catapult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Gyrocopter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Gyrocopter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Hoplite.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Hoplite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Mortar.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Mortar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Ram.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Ram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Slinger.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Slinger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Spearman.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Spearman.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/SteamGiant.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/SteamGiant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/SulphurCarabineer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/SulphurCarabineer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/Swordsman.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/Swordsman.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/UnitFighter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/UnitFighter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/unit/UnitMunition.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/unit/UnitMunition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/IkariamTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/IkariamTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/IkariamTest2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldFightingUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldFightingUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldFightingUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldFightingUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/BattleFieldUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/BattleFieldUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/ForgeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/ForgeUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/ForgeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/ForgeUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/ForgeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/ForgeUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/HouseInfoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/HouseInfoUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/IsLandUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/IsLandUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PanelBattlefield.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PanelBattlefield.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnBattleFieldFighting.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnBattleFieldFighting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnit$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnit$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnit$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnit$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnit$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnit$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnit$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSetUnitBattle.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSetUnitBattle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnWaveAttack$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnWaveAttack$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnWaveAttack$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnWaveAttack$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/PnWaveAttack.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/PnWaveAttack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/SetUnitJDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/SetUnitJDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/SetUnitJDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/WaveAttackUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/WaveAttackUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/WaveAttackUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ui/WaveAttackUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ui/WaveAttackUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Archer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/ArcherBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Balloon-Bombardier.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Balloon-BombardierBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Balloon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Barbarian-Axe_Swinger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Catapult.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/CatapultBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Draft-200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Field.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Flag_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Gyrocopter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/GyrocopterBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Hop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Hoplite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/HopliteBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv18+.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/House/houseLv7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/HouseInfo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/IconUpkeep.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Improve.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Island-city_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Island-city_green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Island-city_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Island-city_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Island_4-0.5.0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Mini_battlefield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Mortar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/MortarBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Pillage_Disabled.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Pillage_Enabled.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Ram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/RamBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Slinger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SlingerBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Spearman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SpearmanBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SteamGiant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SteamGiantBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Steam_Giant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Sulfur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SulphurCarabineerBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Sulphur_Carabineer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Swordsman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SwordsmanBB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/SwordsmanBB_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/Town-1-4-NW-0.7.6-Valentine-Capital.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/TownHall.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/TownHall_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/arival.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/attackFieldLv1-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/attackField1-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/attackField10-16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/attackField17-24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/attackField25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/attackField5-9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/defenceField1-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/defenceField10-16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/defenceField17-24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/defenceField25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/battleField/defenceField5-9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/flag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/iconMrArmy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/island.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/lblHouTitle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/miniBattleField.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/reservePanel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/smallPlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/wall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/wave.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/image/xButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Army$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Army$ClassUnit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Army$Unit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Army.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleField$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleField$TypeOfBattleField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleFieldFighting$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleFieldFighting$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleFieldFighting$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/BattleFieldFighting.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/House$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/House.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/RealArmy$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/RealArmy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/SendingArmy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/SentArmy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Slot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/AirDefence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Archer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Artillery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/BalloonBombardier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/BatteringRam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Catapult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Gyrocopter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/HeavyInfantry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Hoplite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/LightInfantry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/LongRangeFighter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Mortar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Ram.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Slinger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Slot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Spearman.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/SteamGiant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/SulphurCarabineer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/Swordsman.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/UnitFighter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/unit/UnitMunition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/test/IkariamTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldFightingUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldFightingUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/BattleFieldUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/HouseInfoUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/IsLandUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/MyJButtonFlag$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/MyJButtonFlag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/MyPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/MyPanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/MyPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PanelBattlefield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnBattleFieldFighting.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnit$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnit$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnit$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnit$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSetUnitBattle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSlot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnSlotReserve.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnWaveAttack$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnWaveAttack$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/PnWaveAttack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/SetUnitJDialog$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/SetUnitJDialog$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/SetUnitJDialog$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/SetUnitJDialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/UpgradeUnitUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/UpgradeUnitUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/UpgradeUnitUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/UpgradeUnitUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/WaveAttackUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/WaveAttackUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ui/WaveAttackUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv10.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv13.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv18+.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv18+.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/House/houseLv7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/House/houseLv7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/island.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/island.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Army.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Army.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BattleFieldFighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleFieldFighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/RealArmy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RealArmy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/SentArmy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SentArmy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Slot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Archer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Archer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/BalloonBombardier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/BalloonBombardier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Catapult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Catapult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Gyrocopter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Gyrocopter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Hoplite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Hoplite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Mortar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Mortar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Ram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Ram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Slinger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Slinger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Spearman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/SteamGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/SteamGiant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/SulphurCarabineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/SulphurCarabineer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/Swordsman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/Swordsman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/UnitFighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/UnitFighter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/unit/UnitMunition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/unit/UnitMunition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/IkariamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/IkariamTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/IkariamTest2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BattleFieldFightingUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BattleFieldFightingUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BattleFieldUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BattleFieldUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ForgeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ForgeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/HouseInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/HouseInfoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/IsLandUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/IsLandUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PanelBattlefield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PanelBattlefield.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PnBattleFieldFighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PnBattleFieldFighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PnSetUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PnSetUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PnSetUnitBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PnSetUnitBattle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PnSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PnSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/PnWaveAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/PnWaveAttack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/SetUnitJDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/SetUnitJDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/WaveAttackUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/WaveAttackUI.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,29 +364,34 @@
     <session id="-925541530">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="3" />
+          <entry key="IkariamTest" value="1" />
+          <entry key="JAVA/" value="1" />
+          <entry key="java" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="7" />
+          <entry key="UML" value="2" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Army.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
+            <state>
               <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
             </state>
           </provider>
@@ -44,22 +400,52 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/IkariamTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state>
               <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/IkariamTest2.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/SendingArmy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state>
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/RealArmy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/House.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/BattleField.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6708">
+              <caret line="377" lean-forward="true" selection-start-line="377" selection-end-line="377" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -71,14 +457,13 @@
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
-    <option name="height" value="968" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -96,18 +481,20 @@
               <item name="IkariamFinal2" type="b2602c69:ProjectViewProjectNode" />
               <item name="IkariamFinal2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542101790786" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543026180655" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -121,7 +508,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.IkariamTest">
+    <configuration name="IkariamTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.IkariamTest" />
+      <module name="Ikariam_Dat" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IkariamTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.IkariamTest2" />
       <module name="Ikariam_Dat" />
@@ -135,8 +535,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.IkariamTest2" />
+      <item itemvalue="Application.IkariamTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.IkariamTest" />
         <item itemvalue="Application.IkariamTest2" />
       </list>
     </recent_temporary>
@@ -152,27 +557,24 @@
       <option name="presentableId" value="Default" />
       <updated>1542101271407</updated>
       <workItem from="1542101277744" duration="538000" />
+      <workItem from="1543025604685" duration="572000" />
+      <workItem from="1543026235195" duration="401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538000" />
+    <option name="totallyTimeSpent" value="1511000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22483222" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23154363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.29929078" />
@@ -180,15 +582,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,24 +605,103 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/IkariamTest2.java" />
+    <entry file="uml://JAVA/test.IkariamTest">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>test.IkariamTest</OriginalElement>
+          <nodes>
+            <node x="-15.0" y="-71.0">test.IkariamTest</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-281.0" y="-72.0" />
+          <SelectedNodes>
+            <node>test.IkariamTest</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">com</node>
+            <node x="" y="">image</node>
+            <node x="" y="">images</node>
+            <node x="" y="">netscape</node>
+            <node x="" y="">oracle</node>
+            <node x="" y="">test</node>
+            <node x="" y="">org</node>
+            <node x="" y="">toolbarButtonGraphics</node>
+            <node x="" y="">sun</node>
+            <node x="" y="">META-INF</node>
+            <node x="" y="">jdk</node>
+            <node x="" y="">groovyjarjarasm</node>
+            <node x="" y="">java</node>
+            <node x="" y="">groovy</node>
+            <node x="" y="">ui</node>
+            <node x="" y="">javax</node>
+            <node x="" y="">model</node>
+            <node x="" y="">groovyjarjarcommonscli</node>
+            <node x="" y="">javafx</node>
+            <node x="" y="">groovyjarjarantlr</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="266.0" y="237.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Army.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
+        <state>
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/IkariamTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state>
           <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/IkariamTest2.java">
+    <entry file="file://$PROJECT_DIR$/src/model/SendingArmy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state>
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/RealArmy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/House.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6708">
+          <caret line="377" lean-forward="true" selection-start-line="377" selection-end-line="377" />
         </state>
       </provider>
     </entry>
@@ -225,6 +711,17 @@
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

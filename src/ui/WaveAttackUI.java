@@ -152,8 +152,7 @@ public class WaveAttackUI extends JDialog {
                     pnWave[count].getLblOrigin().setText(IsLandUI.myHouse.getName());
                     pnWave[count].getLblTarget().setText(IsLandUI.house[key].getName());
                     pnWave[count].getLblUnit().setText(numberOfUnit + "");
-                    pnWave[count].getLblMission().setIcon(new ImageIcon(getClass().getResource("/Image/Pillage_Enabled.PNG")));
-
+                    pnWave[count].getLblMission().setIcon(new ImageIcon(getClass().getResource("/Image/Pillage_Disabled.PNG")));                 
                     SimpleDateFormat ft = new SimpleDateFormat("mm:ss");
                     Timer dongho = new Timer(1000, new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
@@ -165,6 +164,14 @@ public class WaveAttackUI extends JDialog {
                     pnWave[count].setBounds(20, 60 * count + 75, 820, 50);
                     pnMain.add(pnWave[count]);
                     count++;
+//                    pnWave[count].getBtnAction().addActionListener(new ActionListener() {
+//						
+//						@Override
+//						public void actionPerformed(ActionEvent arg0) {
+//							// TODO Auto-generated method stub
+//							
+//						}
+//					});
                 }
 
             }
@@ -189,11 +196,19 @@ public class WaveAttackUI extends JDialog {
                     pnWave[count].getLblOrigin().setText(IsLandUI.myHouse.getName());
                     pnWave[count].getLblTarget().setText(IsLandUI.house[key].getName());
                     pnWave[count].getLblUnit().setText(numberOfUnit + "");
-                    pnWave[count].getLblMission().setIcon(new ImageIcon(getClass().getResource("/Image/arival.PNG")));
+                    pnWave[count].getLblMission().setIcon(new ImageIcon(getClass().getResource("/Image/Pillage_Enabled.PNG")));
                     SimpleDateFormat ft = new SimpleDateFormat("mm:ss");
                     Timer dongho = new Timer(1000, new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            pnWave[temp].getLblArrivalTime().setText(ft.format(new Date(System.currentTimeMillis() - sendingArmy.getStartTime())));
+                            if(sendingArmy.getFinishTime() < System.currentTimeMillis())
+                            {
+                                pnWave[temp].getLblArrivalTime().setText(ft.format(new Date(System.currentTimeMillis()-sendingArmy.getFinishTime())));
+
+                            }
+                            else {
+                                pnWave[temp].getLblArrivalTime().setText(ft.format(new Date(sendingArmy.getFinishTime() - System.currentTimeMillis())));
+
+                            }
                         }
                     });
                     dongho.start();

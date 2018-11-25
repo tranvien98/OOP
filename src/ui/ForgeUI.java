@@ -25,25 +25,33 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import javafx.scene.AmbientLight;
+import model.Army;
 import model.BattleField;
 import model.BattleFieldFighting;
 import model.RealArmy;
 import model.Wall;
 
+/**
+*
+* @author TranVien
+*/
+
 public class ForgeUI extends JDialog {
 	 JPanel pnMain, pnTitle,pnAttack,pnDefense;
 	 JLabel lblImgTitle, lblTitle, lblAttack,lblDefense;
-	 JComboBox<String> forgeLevelAttack,forgeLevelDefense;
+	 JComboBox<String> forgeLevel;
 	 JButton btnDispose, btnOK;
      String[] comboNum = {"0","1","2","3","4","5"};
 	 public ForgeUI() {
 	      addControls();
 	      addEvents();
 	      // khi xet su kien thi xoa di
-	     setSize(600,300);
-        setLocationRelativeTo(null);
-          setModal(true);
-          setVisible(true);
+//	     setSize(600,300);
+//        setLocationRelativeTo(null);
+//          setModal(true);
+//          setVisible(true);
 	    }
 	 public void addControls(){
 		 Container con = getContentPane();
@@ -73,28 +81,14 @@ public class ForgeUI extends JDialog {
 	     pnAttack.setBounds(0, 50, 600, 50);
 	     pnAttack.setBackground(new Color(251, 232, 193));
 	     pnMain.add(pnAttack);
-	     lblAttack = new JLabel("Attack Army");
+	     lblAttack = new JLabel("Level");
 	     lblAttack.setBounds(50, 15, 90, 20);
 	     pnAttack.add(lblAttack);
-	     forgeLevelAttack = new JComboBox<String>(comboNum);
-	     forgeLevelAttack.setSelectedIndex(0);
-	     forgeLevelAttack.setBounds(200, 15, 200, 20);
-	     forgeLevelAttack.setBounds(200, 15, 200, 20);
-	     pnAttack.add(forgeLevelAttack);
-	     
-	     
-	     pnDefense = new JPanel(null);
-	     pnDefense.setBounds(0,110, 600, 50);
-	     pnDefense.setBackground(new Color(251, 232, 193));
-	     pnMain.add(pnDefense);
-	     lblDefense = new JLabel("Defense Army");
-	     lblDefense.setBounds(50, 15, 90, 20);
-	     pnDefense.add(lblDefense);
-	     forgeLevelDefense = new JComboBox<String>(comboNum);
-	     forgeLevelDefense.setSelectedIndex(0);
-	     forgeLevelDefense.setBounds(200, 15, 200, 20);
-	     pnDefense.add(forgeLevelDefense);
-	     
+	     forgeLevel = new JComboBox<String>(comboNum);
+	     forgeLevel.setBounds(200, 15, 200, 20);
+	     forgeLevel.setBounds(200, 15, 200, 20);
+	     pnAttack.add(forgeLevel);
+	     	     
 	     btnOK = new JButton("OK");
 	     btnOK.setBounds(250, 210, 110, 30);
 	     btnOK.setBackground(new Color(248, 222, 164));
@@ -104,36 +98,101 @@ public class ForgeUI extends JDialog {
 	     
 	 }
 	 public void addEvents(){
-		 btnDispose.addActionListener(new ActionListener() {
+		  this.addComponentListener(new ComponentAdapter() {
+	            public void componentShown(ComponentEvent evt) {
+	            
+	                forgeLevel.setSelectedIndex(IsLandUI.currentHouse.getLevelForge());
+	            }
+	        });
+		 
+		  btnOK.addActionListener(new ActionListener() {
+                 
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	int damage = 100;
+	            	int armour = 0;
+	            	int level = 0;
+	                String fg = forgeLevel.getSelectedItem().toString();
+	            	 if(fg == "0") {
+	            		
+	            		 damage = 100;
+	            		 armour = 0;
+	            		 level = 0;
+	            	 }
+	            	 else if(fg == "1")
+	            	 {
+	            		
+	            		 damage = 110;
+	            	     armour = 0;
+	            	     level = 1;
+	            	 }
+	            	 else if(fg == "2")
+	            	 {
+	            		
+	            		 damage = 110;
+	            		 armour = 1;
+	            		 level = 2;
+	            		 
+	            	 }
+	            	 else if(fg == "3")
+	            	 {
+	            		
+	            		 damage = 115;
+	            		 armour = 1;
+	            		 level = 3;
+	            	 }
+	                 else if(fg == "4")
+	                 {
+	            	
+	            		 damage = 115;
+	            		 armour = 2;
+	            		 level = 4;
+	            	 }
+	            	 else 
+	            	 {
+	            	
+	            		 damage = 120;
+	            		 armour = 2;
+	            		 level = 5;
+	            	 }
+	            	 IsLandUI.currentHouse.getArmy().setDamageForge(damage);
+	            	 IsLandUI.currentHouse.getArmy().setArmourForge(armour);
+//	            	 System.out.println("test" +IsLandUI.currentHouse.getArmy().getDamageForge());
+	            	 IsLandUI.currentHouse.setLevelForge(level);
+	            	 if(IsLandUI.currentHouse.getLevelForge() != 0) {
+	            		 IsLandUI.currentHouse.getArmy().setStartTime(System.currentTimeMillis());
+	            		 IsLandUI.currentHouse.getArmy().setFinishTime(IsLandUI.currentHouse.getArmy().getStartTime()+IsLandUI.currentHouse.getArmy().getTimeForge(IsLandUI.fast));
+	            	 }
+	            	 dispose();
+	                 IsLandUI.bffUI = new BattleFieldFightingUI(IsLandUI.currentHouse.getBattleFieldFighting());
+	                    IsLandUI.bffUI.dispose();
+	            	 HouseInfoUI house = new HouseInfoUI();
+	            	 house.dispose();
+	            }
+	        });
+		  btnDispose.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	                dispose();
 	            }
 	        });
-		  btnOK.addActionListener(new ActionListener() {
-
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	 dispose();
-	            }
-	        });
 	 }
 	 // hiển thị
-//	 public void showWindow() {
-//	        this.setSize(600,300);
-//	        setUndecorated(true);
-//	        this.setBackground(new Color(0, 0, 0, 0));
-//	        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-//	   	    this.setLocationRelativeTo(null);
-//	        this.setModal(true);
-//	        this.setVisible(true);
-//	    }
-
-	  public static void main(String args[]) {
-	
-	                new ForgeUI();
-	      
+	 public void showWindow() {
+	        this.setSize(600,300);
+	        setUndecorated(true);
+	        this.setBackground(new Color(0, 0, 0, 0));
+	        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	   	    this.setLocationRelativeTo(null);
+	        this.setModal(true);
+	        this.setVisible(true);
 	    }
+
+//	  public static void main(String args[]) {
+//	
+//	                new ForgeUI();
+//	      
+//	    }
 	
 	
 }

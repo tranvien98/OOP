@@ -65,7 +65,7 @@ public class BattleFieldFightingUI extends JDialog{
         pnMain.setBounds(0, 50, 980, 480);
         pnMain.setBackground(new Color(253, 247, 221));
         con.add(pnMain);
-        
+      
         pnAttack = new PnBattleFieldFighting(battleFieldFighting.getAttackBattleField());
         pnDefence = new PnBattleFieldFighting(battleFieldFighting.getDefenceBattleField());
         pnAttack.setBounds(10, 50, 946, 179);

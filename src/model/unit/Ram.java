@@ -20,9 +20,11 @@ public class Ram extends Artillery{
 
     public Ram() {
         hitPoint = 88;
-//        munition = 0;
+        munition = -1;
         armour = 1;
-        damage = 270;
+        damage = 80;
+        accuracy = 0.1f;
+        accuracyNear = 0.7f;
     }
 
     public String getImageUrl() {

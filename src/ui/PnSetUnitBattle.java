@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+F * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -27,7 +27,7 @@ public class PnSetUnitBattle extends PnSetUnit {
         lblName.setBounds(210, 15, 100, 20);
         sld.setBounds(360, 15, 350, 20);
         txt.setBounds(750, 15, 30, 20);
-        btnSetMax.setBounds(790, 15, 50, 20);
+        btnSetMax.setBounds(790, 15, 60, 20);
         
         txtMax = new JTextField(3);
         txtMax.setBounds(300, 15, 30, 15);

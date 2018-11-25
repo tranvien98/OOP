@@ -7,11 +7,15 @@ import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
+
+import ui.BattleFieldFightingUI;
+import ui.BattleInformationUI;
 import ui.IsLandUI;
 
 public class House {
 
     private int id;
+    private int fast;
     private int levelOfHouse;
     private int levelOfWall;
     private Wall wall;
@@ -22,6 +26,8 @@ public class House {
     private ArrayList<RealArmy> waitingWaveAttack;
     private BattleFieldFighting battleFieldFighting;
     private String name;
+    
+    private int levelForge = 0 ;
 
     public House() {
         army = new Army();
@@ -101,7 +107,15 @@ public class House {
         this.typeOfHouse = typeOfHouse;
     }
 
-    public HashMap<Integer, PriorityQueue<SendingArmy>> getSendingArmy() {
+    public int getFast() {
+		return fast;
+	}
+
+	public void setFast(int fast) {
+		this.fast = fast;
+	}
+
+	public HashMap<Integer, PriorityQueue<SendingArmy>> getSendingArmy() {
         return sendingArmy;
     }
 
@@ -129,13 +143,17 @@ public class House {
         Timer timer = new Timer();
         Army defenceArmy = this.army;
         int houseID = this.getId();
+        int myId = IsLandUI.myHouse.getId();
+        System.out.println("ID"+ houseID);
         sendingArmy.setTimer(timer);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 battleFieldFighting.getAttackBattleField().addToReserve(battleFieldFighting.getAttackBattleField().getReserve(), attackArmy, houseID);
+                battleFieldFighting.getAttackBattleField().countArmyAtt(battleFieldFighting.getAttackBattleField().getReserve(), attackArmy, myId);
                 if (!battleFieldFighting.isWar()) {
                     battleFieldFighting.getDefenceBattleField().addToReserve(battleFieldFighting.getDefenceBattleField().getReserve(), defenceArmy, houseID);
+                    battleFieldFighting.getDefenceBattleField().countArmyAtt( battleFieldFighting.getDefenceBattleField().getReserve(), defenceArmy, houseID);
                     army.clear();
                     battleFieldFighting.setWar(true);
                     Stack<Wall> walls = new Stack<>();
@@ -146,13 +164,28 @@ public class House {
                     boolean isAllWall = battleFieldFighting.getDefenceBattleField().isAllWall();
                     battleFieldFighting.getDefenceBattleField().addToField(isAllWall);
                     battleFieldFighting.getAttackBattleField().addToField(isAllWall);
+                   
                     battleFieldFighting.startAttack();
                 }
                 IsLandUI.myHouse.getSendingArmy().get(id).poll();
-                JOptionPane.showMessageDialog(null, "Success");
+                int input = JOptionPane.showOptionDialog(null, "Success", null, JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+            	  if(input == JOptionPane.OK_OPTION)
+            	  {
+            		  IsLandUI.bffUI = new BattleFieldFightingUI(IsLandUI.currentHouse.getBattleFieldFighting());
+                      IsLandUI.bffUI.showWindow();
+            	  }
             }
-        }, 100);
+        }, attackArmy.fastForward(attackArmy, IsLandUI.fast));
         // thời gian đi quân
     }
+
+	public int getLevelForge() {
+		return levelForge;
+	}
+
+	public void setLevelForge(int levelForge) {
+		this.levelForge = levelForge;
+	}
 
 }

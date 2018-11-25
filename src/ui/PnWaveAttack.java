@@ -9,7 +9,9 @@ import java.awt.Color;
 import java.awt.JobAttributes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.PriorityQueue;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -118,10 +120,13 @@ public class PnWaveAttack extends JPanel {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
+                  
                             IsLandUI.myHouse.getArmy().addArmy(sendingArmy.getArmy());
+                            System.out.println("::"+sendingArmy.getArmy().fastForward(sendingArmy.getArmy(), IsLandUI.fast) );
                             JOptionPane.showMessageDialog(null, "Wave Success!");
                         }
-                    }, 100000);
+                    }, IsLandUI.myHouse.getArmy().fastForwardComeBack(IsLandUI.myHouse.getArmy(), IsLandUI.fast));
+                    System.out.println(":"+ IsLandUI.myHouse.getArmy().fastForwardComeBack(IsLandUI.myHouse.getArmy(), IsLandUI.fast));
                 }
             }
         });

@@ -4,7 +4,7 @@ public class BalloonBombardier extends AirDefence {
 
     public static final int speed = 20;
     public static final int size = 2;
-    public static final float accuracy = 0.2f;
+//    public static final float accuracy = 0.2f;
     private String imageUrl = "/image/Balloon-BombardierBB.png";
 
     public BalloonBombardier() {
@@ -12,6 +12,7 @@ public class BalloonBombardier extends AirDefence {
         munition = 2;
         damage = 48;
         armour = 0;
+        accuracy = 0.2f;
     }
 
     public String getImageUrl() {

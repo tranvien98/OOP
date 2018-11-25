@@ -74,10 +74,27 @@ public class Wall extends UnitFighter{
     public static String getImageUrl() {
         return imageUrl;
     }
+    
 
     public static void setImageUrl(String imageUrl) {
         Wall.imageUrl = imageUrl;
     }
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public void setGarisionLimit(int garisionLimit) {
+		this.garisionLimit = garisionLimit;
+	}
+
+	public void setAccuracy(float accuracy) {
+		this.accuracy = accuracy;
+	}
     
     
 

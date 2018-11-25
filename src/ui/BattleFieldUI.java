@@ -54,7 +54,7 @@ import model.unit.Swordsman;
  * @author admin
  */
 public class BattleFieldUI extends JDialog {
-    
+	
     PanelBattlefield pnBattlefield;
     JButton btnOK, btnRun;
     BattleField battleField;
@@ -71,7 +71,7 @@ public class BattleFieldUI extends JDialog {
     
     PnSetUnitBattle[] pnSetUnitBattle;
     BattleFieldFighting battleFieldFighting;
-    
+    private int numberArmy[] = new int[12];
     public BattleFieldUI() {
         sendingArmy = new ArrayList<SendingArmy>();
         battleField = new BattleField(IsLandUI.currentHouse.getLevelOfHouse(), BattleField.TypeOfBattleField.ATTACK);
@@ -212,32 +212,58 @@ public class BattleFieldUI extends JDialog {
         btnRun.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	// them numberSent
+            	int[] numberSentArmy = new int[12];  
+            	  for (int i=0;i<12;i++) {
+
+                     numberSentArmy[i] = Integer.valueOf(pnSetUnitBattle[i].getSld().getValue());
+             
+                  }
+//                numberArmy(numberSentArmy);
                 saveArmyAndSentedArmy();
                 battleField.resetAll(battleField.getLevelOfHouse());
                 pnBattlefield.resetAll();
                 pnBattlefield.updateUI();
+//                IsLandUI.myHouse.getArmy().setNumberArmyAtt(getNumberArmy());
+               
+//    	        for(int i=0;i<12;i++)
+//    	        {
+//    	        	System.out.println("quan"+i+"hi"+numberSentArmy[i]);
+//    	       }
 //                IsLandUI.currentHouse.addArmyToBattleField(army);
 //                battleFieldFighting.setMyBattleField(battleField);
               //  battleFieldFighting.setEnemyBattleField(battleField);
             }
         });
     }
-    
+//    public void numberArmy(int[] Nu) {
+//    	int[] res = IsLandUI.myHouse.getArmy().getNumberArmyAtt();
+//    	
+//    	  for (int i=0;i< Nu.length;i++) {                      
+//             res[i] += Nu[i];      
+//          }
+//    	setNumberArmy(res);
+//    }
     private void saveArmyAndSentedArmy() {
         SendingArmy temp = new SendingArmy();
-        temp.setStartTime(System.currentTimeMillis());
-        temp.setFinishTime(temp.getStartTime()+ temp.getArmy().getSpeedTimeForWholeRoute());
         army = IsLandUI.myHouse.getArmy();
         temp.getArmy().setArmourUpgrade(army.getArmourUpgrade());
         temp.getArmy().setDamageUpgrade(army.getDamageUpgrade());
+        // sửa forge
+        temp.getArmy().setArmourForge(army.getArmourForge());
+        temp.getArmy().setDamageForge(army.getDamageForge());
         for (Army.Unit unit : Army.Unit.values()) {
             if (unit.ordinal() == 12) break;
             temp.getArmy().setNumberOf(unit, pnSetUnitBattle[unit.ordinal()].getSld().getValue());
             army.setNumberOf(unit, army.getNumberOf(unit) - pnSetUnitBattle[unit.ordinal()].getSld().getValue());
+            
             pnSetUnitBattle[unit.ordinal()].getJTextFieldMax().setText(String.valueOf(army.getNumberOf(unit)));
             pnSetUnitBattle[unit.ordinal()].getSld().setMaximum(army.getNumberOf(unit));
             pnSetUnitBattle[unit.ordinal()].getSld().setValue(0);
         }
+        temp.setStartTime(System.currentTimeMillis());
+        temp.setFinishTime(temp.getStartTime()+ temp.getArmy().fastForward(temp.getArmy(), IsLandUI.fast));
+       
       //  sendingArmy.add(temp);
         PriorityQueue<SendingArmy>  tempArrayList = IsLandUI.myHouse.getSendingArmy().get(IsLandUI.currentHouse.getId());
         if(tempArrayList == null)
@@ -338,7 +364,8 @@ public class BattleFieldUI extends JDialog {
                 for (int i = 0; i < pnSetUnitBattle[unit.ordinal()].getSld().getValue(); i++) {
                     battleField.reserve.getSpear().push(new Spearman());
                 }
-                battleField.setFlankToSlot(false);
+                battleField.setFrontLine();
+                battleField.setFlankToSlot();
                 pnBattlefield.updates(pnBattlefield.pnFlank, 0);
                 break;
             case SteamGiant:
@@ -366,13 +393,22 @@ public class BattleFieldUI extends JDialog {
                 for (int i = 0; i < pnSetUnitBattle[unit.ordinal()].getSld().getValue(); i++) {
                     battleField.reserve.getSword().push(new Swordsman());
                 }
-                battleField.setFlankToSlot(false);
+                battleField.setFrontLine();
+                battleField.setFlankToSlot();
                 pnBattlefield.updates(pnBattlefield.pnFlank, 0);
                 break;
             default:
         }
     }
-      private void addToReserves() {
+      public int[] getNumberArmy() {
+		return numberArmy;
+	}
+
+	public void setNumberArmy(int[] numberArmy) {
+		this.numberArmy = numberArmy;
+	}
+
+	private void addToReserves() {
         reservePanel.removeAll();
         int i = 0;
         PnSlotReserve[] pnslotReserve = new PnSlotReserve[12];

@@ -12,7 +12,7 @@ import ui.IsLandUI;
  */
 public class IkariamTest {
     public static void main(String[] args) {
-        IsLandUI isLandUI = new IsLandUI("Ikariam");
+        IsLandUI isLandUI = new IsLandUI("Ikariam",1);
         isLandUI.showWindow();
     }
 }

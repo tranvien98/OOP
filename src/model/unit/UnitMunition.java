@@ -11,13 +11,23 @@ package model.unit;
  */
 public class UnitMunition extends UnitFighter{
     protected int munition;
+    protected int nearHit;
+   
 
-    public int getMunition() {
-        return munition;
-    }
+	public int getMunition() {
+		return munition;
+	}
 
-    public void setMunition(int munition) {
-        this.munition = munition;
-    }
-    
+	public void setMunition(int munition) {
+		this.munition = munition;
+	}
+
+	public int getNearHit() {
+		return nearHit;
+	}
+
+	public void setNearHit(int nearHit) {
+		this.nearHit = nearHit;
+	}
+     
 }

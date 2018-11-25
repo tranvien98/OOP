@@ -62,7 +62,7 @@ public class PnSetUnit extends JPanel{
         txt.setBounds(520, 15, 30, 20);
         this.add(txt);
         btnSetMax = new JButton("Max");
-        btnSetMax.setBounds(555, 15, 60, 20);
+        btnSetMax.setBounds(550, 15, 60, 20);
         this.add(btnSetMax);
     }
     public void addEvents() {        

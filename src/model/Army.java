@@ -23,6 +23,15 @@ public class Army {
 
     private int[] damageUpgrade = new int[12];
     private int[] armourUpgrade = new int[12];
+    
+    private int[] numberArmyAtt = new int[12];
+    private int[] numberDeathArmyAtt = new int[12];
+    private int[] numberAliveAtt = new int[12];
+	private int damageForge;
+	private int armourForge;
+	private long startTime,finishTime;
+   
+   
     private Wall wall;
     private int numberOfHop;
     private int numberOfSteam;
@@ -42,7 +51,7 @@ public class Army {
     private int numberOfSC;
 
     public static enum Unit {
-        Archer(2, ""), Balloon(1, ""), Catapult(2, ""), Gyrocopter(1, ""), Hoplite(1, ""), Mortar(1, ""), Ram(3, ""), Slinger(3, ""), Spearman(2, ""), SteamGiant(2, ""), Sulfur(1, ""), Swordsman(1, ""), Wall(0, "");
+        Archer(3, ""), Balloon(1, ""), Catapult(2, ""), Gyrocopter(6, ""), Hoplite(4, ""), Mortar(2, ""), Ram(2, ""), Slinger(3, ""), Spearman(5, ""), SteamGiant(4, ""), Sulfur(3, ""), Swordsman(5, ""), Wall(0, "");
         private int priorityInLine;
         private String img;
 
@@ -126,7 +135,51 @@ public class Army {
         this.numberOfSpear = numberOfSpear;
     }
 
-    public int getNumberOfBB() {
+
+
+	public int[] getNumberArmyAtt() {
+		return numberArmyAtt;
+	}
+
+	public int[] getNumberAliveAtt() {
+		return numberAliveAtt;
+	}
+
+	public void setNumberAliveAtt(int[] numberAliveAtt) {
+		this.numberAliveAtt = numberAliveAtt;
+	}
+
+	public int[] getNumberDeathArmyAtt() {
+		return numberDeathArmyAtt;
+	}
+
+	public long getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
+	}
+
+	public long getFinishTime() {
+		return finishTime;
+	}
+
+	public void setFinishTime(long finishTime) {
+		this.finishTime = finishTime;
+	}
+
+	public void setNumberDeathArmyAtt(int[] numberDeathArmyAtt) {
+		this.numberDeathArmyAtt = numberDeathArmyAtt;
+	}
+
+	public void setNumberArmyAtt(int[] numberArmyAtt) {
+		this.numberArmyAtt = numberArmyAtt;
+	}
+
+	
+
+	public int getNumberOfBB() {
         return numberOfBB;
     }
 
@@ -374,25 +427,59 @@ public class Army {
     public void setArmourUpgrade(int[] armourUpgrade) {
         this.armourUpgrade = armourUpgrade;
     }
-    // sửa
-    public int getSpeedTimeForWholeRoute() {
-        if (getNumberOfBB() > 0)
-            return 40*1000;
-        else if(getNumberOfGyrocopter() > 0)
-        	return 30*1000;
-        else if (getNumberOfSteam() > 0 
-                || getNumberOfMotar() > 0 
-                || getNumberOfCatapult() > 0 
-                || getNumberOfRam() > 0)
-            return 15*1000;
-//        else if (getNumberOfArcher() > 0 
-//                || getNumberOfSC() > 0 
-//                || getNumberOfSlinger() > 0
-//                || getNumberOfHop() > 0 
-//                || getNumberOfSpear() > 0
-//                || getNumberOfSword() > 0)
-       return 10*1000;
-        
-         // chỉ có máy bay
+ 
+	public int getDamageForge() {
+		return damageForge;
+	}
+
+	public void setDamageForge(int damageForge) {
+		this.damageForge = damageForge;
+	}
+
+	public int getArmourForge() {
+		return armourForge;
+	}
+
+	public void setArmourForge(int armourForge) {
+		this.armourForge = armourForge;
+	}
+
+	// sửa
+    public int getSpeedTimeForWholeRoute(Army army) {
+      
+      if (getNumberOfBB() > 0)
+          return 30*60*1000;
+      else if (getNumberOfSteam() > 0
+              || getNumberOfMotar() > 0
+              || getNumberOfCatapult() > 0
+              || getNumberOfRam() > 0)
+          return 15*60*1000;
+      else if (getNumberOfArcher() > 0
+              || getNumberOfSC() > 0
+              || getNumberOfSlinger() > 0
+              || getNumberOfHop() > 0
+              || getNumberOfSpear() > 0
+              || getNumberOfSword() > 0)
+          return 10*60*1000;
+
+      return 450*1000; // chỉ có máy bay              
     }
+    public int fastForward(Army army, int trongso) {
+    
+    	int a = getSpeedTimeForWholeRoute(army);
+    	int time = (int)(a/trongso);
+    	return time;
+    }
+    public int fastForwardComeBack(Army army,int trongso) {
+    	int a = getSpeedTimeForWholeRoute(army);
+    	int time = (int)((a + 60*60*1000)/trongso);
+    	return time;
+    }
+    public int getTimeForge(int trongso) {
+    	return (int)24*3600*1000/trongso;
+    }
+    public int getForgeComeBack(int trongso) {
+    	return (int)6*24*3600*1000/trongso;
+    }
+  
 }

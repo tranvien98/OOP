@@ -30,7 +30,7 @@ public class PnBattleFieldFighting extends JPanel {
         addControls();
         addEvents();
     }
-
+    
     public void addControls() {
         this.setLayout(null);
         pnSlotReserve = new PnSlotReserve[12];
@@ -44,7 +44,6 @@ public class PnBattleFieldFighting extends JPanel {
         pnBattleField = new PanelBattlefield(battleField);
         pnBattleField.setBounds(175, 0, 763, 192);
         this.add(pnBattleField);
-
     }
 
     public void addEvents() {
